@@ -50,9 +50,8 @@ void vectorirq_handle_level(struct int_pin *ipin, __u32 irq);
 
 void irq_set_handler(__u32 irq, IRQ_PIN_HANDLER irq_handle, int chain_flag);
 
-int  irq_set_trigger(__u32 irq, __u32 type);
+int irq_set_trigger(__u32 irq, __u32 type);
 
-int  irq_register_isr(__u32 irq, IRQ_DEV_HANDLER dev_isr, void *dev);
+int irq_request(__u32 irq, IRQ_DEV_HANDLER dev_isr, void *dev);
 
 int irq_assoc_intctl(__u32 irq, struct int_ctrl *intctrl);
-

@@ -368,7 +368,7 @@ static int __init lan9220_probe(struct platform_device *pdev)
 
 #ifdef CONFIG_IRQ_SUPPORT
 	irq_set_trigger(irq, IRQ_TYPE_HIGH); // fixme
-	ret = irq_register_isr(irq, lan9220_isr, ndev);
+	ret = irq_request(irq, lan9220_isr, ndev);
 	if (ret < 0)
 		goto error;
 #endif

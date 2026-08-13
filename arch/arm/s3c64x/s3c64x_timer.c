@@ -56,9 +56,9 @@ int __init s3c6410_timer_init(void)
 	val &= ~(2<< 8);
 	writel(VA(TCON), val);
 
-	ret = irq_register_isr(INT_TIMER1, s3c6410_timer_isr, NULL);
+	ret = irq_request(INT_TIMER1, s3c6410_timer_isr, NULL);
 	if (ret < 0) {
-		printf("%s %d irq_register_isr() failed!\n", __FILE__, __LINE__);
+		printf("%s %d irq_request() failed!\n", __FILE__, __LINE__);
 		return ret;
 	}
 

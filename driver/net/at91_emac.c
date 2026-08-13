@@ -47,10 +47,7 @@ static int at91_emac_isr(__u32 irq, void *dev)
 	struct net_device *ndev = dev;
 
 	stat = at91_emac_readl(EMAC_ISR);
-
-#ifdef CONFIG_DEBUG
-	printf("%s(), isr = 0x%08x\n", __func__, stat);
-#endif
+	DPRINT("%s(), isr = 0x%08x\n", __func__, stat);
 
 	if (stat & 0x2)
 		at91_emac_recv(ndev);
@@ -69,10 +66,10 @@ static int at91_emac_send(struct net_device *ndev, struct sock_buff *skb)
 {
 	__u32 val;
 	volatile struct emac_buff_desc *tx_rear;
-	__u32 ulFlag;
+	__u32 flag;
 	struct at91_emac *emac = ndev->chip;
 
-	lock_irq_psr(ulFlag);
+	lock_irq_psr(flag);
 
 	tx_rear = emac->tx_rear++;
 
@@ -92,7 +89,7 @@ static int at91_emac_send(struct net_device *ndev, struct sock_buff *skb)
 
 	ndev->stat.tx_packets++;
 
-	unlock_irq_psr(ulFlag);
+	unlock_irq_psr(flag);
 
 	return 0;
 }
@@ -275,7 +272,7 @@ static int __init at91_emac_probe(void)
 		goto L1;
 	}
 
-	irq_register_isr(PID_EMAC, at91_emac_isr, ndev);
+	irq_request(PID_EMAC, at91_emac_isr, ndev);
 	at91_emac_writel(EMAC_IER, 0x3cf7);
 
 	return 0;
@@ -285,4 +282,3 @@ L1:
 }
 
 module_init(at91_emac_probe);
-

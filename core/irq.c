@@ -11,7 +11,7 @@ static struct int_pin irq_pin_set[MAX_IRQ_NUM];
 
 static int handle_dev_irq_list(__u32 irq, struct irq_dev *dev_list);
 
-int irq_register_isr(__u32 irq, IRQ_DEV_HANDLER isr, void *dev)
+int irq_request(__u32 irq, IRQ_DEV_HANDLER isr, void *dev)
 {
 	struct irq_dev *idev, **p;
 	struct int_pin *pin;
@@ -181,7 +181,7 @@ int irq_set_trigger(__u32 irq, __u32 type)
 	return -EINVAL;
 }
 
-int irq_register_isr(__u32 irq, IRQ_DEV_HANDLER isr, void *dev)
+int irq_request(__u32 irq, IRQ_DEV_HANDLER isr, void *dev)
 {
 	return -EINVAL;
 }

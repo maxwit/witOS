@@ -23,9 +23,9 @@ int __init at91sam926x_timer_init(void)
 
 	writel(VA(AT91SAM926X_PA_PITC + PITC_MR), (MCK_RATE / 16 / 1000));
 
-	ret = irq_register_isr(1, at91sam926x_pit_isr, NULL);
+	ret = irq_request(1, at91sam926x_pit_isr, NULL);
 	if (ret < 0) {
-		printf("%s(): irq_register_isr() failed!\n", __func__);
+		printf("%s(): irq_request() failed!\n", __func__);
 		return ret;
 	}
 

@@ -7,10 +7,8 @@ int device_register(struct device *dev)
 	struct list_head *iter;
 	struct bus_type *bus = dev->bus;
 
-	// step 1:
 	list_add_tail(&dev->bus_node, &bus->dev_list);
 
-	// step 2:
 	list_for_each(iter, &bus->drv_list) {
 		struct driver *drv;
 

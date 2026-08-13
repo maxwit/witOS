@@ -179,7 +179,7 @@ static int __init cs89x0_init(void)
 	ndev->ndev_poll   = cs89x0_poll;
 #endif
 
-	irq_register_isr(CONFIG_CS8900_IRQ, cs89x0_isr, ndev);
+	irq_request(CONFIG_CS8900_IRQ, cs89x0_isr, ndev);
 
 	ret = ndev_register(ndev);
 

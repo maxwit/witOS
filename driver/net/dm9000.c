@@ -359,7 +359,7 @@ static int __init dm9000_probe(struct platform_device *pdev)
 	ndev->mdio_write = dm9000_mdio_write;
 
 #ifdef CONFIG_IRQ_SUPPORT
-	ret = irq_register_isr(irq, dm9000_isr, ndev);
+	ret = irq_request(irq, dm9000_isr, ndev);
 #else
 	ndev->ndev_poll = dm9000_poll;
 #endif
