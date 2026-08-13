@@ -17,10 +17,29 @@
 #define DM9000_DATA_PORT         (DM9000_PHYS_BASE + 0x4)
 #endif
 
+// FIXME: to be checked
+static struct resource dm9000_res[] = {
+	[0] = {
+		.start = DM9000_PHYS_BASE,
+		.size = 4,
+		.flag = IORESOURCE_MEM,
+	},
+	[1] = {
+		.start = DM9000_PHYS_BASE + 4,
+		.size = 4,
+		.flag = IORESOURCE_MEM,
+	},
+	[2] = {
+		.start = CONFIG_DM9000_IRQ,
+		.size = 1,
+		.flag = IORESOURCE_IRQ,
+	},
+};
+
 static struct platform_device dm9000_device = {
 	.dev = {
-		.mem = DM9000_PHYS_BASE,
-		.irq = CONFIG_DM9000_IRQ,
+		.resources = dm9000_res,
+		.res_num = ARRAY_ELEM_NUM(dm9000_res),
 	},
 	.name = "dm9000",
 };
