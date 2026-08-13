@@ -46,7 +46,9 @@ static int at91_emac_isr(__u32 irq, void *dev)
 {
 	struct net_device *ndev = dev;
 
-	return at91_emac_poll(ndev);
+	at91_emac_poll(ndev);
+
+	return IRQ_HANDLED;
 }
 
 static int at91_emac_poll(struct net_device *ndev)
@@ -54,7 +56,6 @@ static int at91_emac_poll(struct net_device *ndev)
 	__u32 stat;
 
 	stat = at91_emac_readl(EMAC_ISR);
-	DPRINT("%s(), isr = 0x%08x\n", __func__, stat);
 
 	if (stat & 0x2)
 		at91_emac_recv(ndev);
@@ -246,7 +247,7 @@ static int at91_emac_set_mac(struct net_device *ndev, const __u8 mac_addr[])
 	return 0;
 }
 
-static int __init at91_emac_probe(void)
+static int __init at91_emac_driver_init(void)
 {
 	int ret;
 	struct net_device *ndev;
@@ -286,4 +287,4 @@ L1:
 	return ret;
 }
 
-module_init(at91_emac_probe);
+module_init(at91_emac_driver_init);
