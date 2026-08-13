@@ -40,11 +40,18 @@ static int at91_emac_recv(struct net_device *);
 static int at91_emac_send(struct net_device *, struct sock_buff *);
 static int at91_emac_isr(__u32, void *);
 static int at91_emac_set_mac(struct net_device *, const __u8 []);
+static int at91_emac_poll(struct net_device *ndev);
 
 static int at91_emac_isr(__u32 irq, void *dev)
 {
-	__u32 stat;
 	struct net_device *ndev = dev;
+
+	return at91_emac_poll(ndev);
+}
+
+static int at91_emac_poll(struct net_device *ndev)
+{
+	__u32 stat;
 
 	stat = at91_emac_readl(EMAC_ISR);
 	DPRINT("%s(), isr = 0x%08x\n", __func__, stat);
@@ -54,13 +61,6 @@ static int at91_emac_isr(__u32 irq, void *dev)
 
 	return 0;
 }
-
-#ifndef CONFIG_IRQ_SUPPORT
-static int at91_emac_poll(struct net_device *ndev)
-{
-	return at91_emac_isr(0, ndev);
-}
-#endif
 
 static int at91_emac_send(struct net_device *ndev, struct sock_buff *skb)
 {
@@ -171,14 +171,16 @@ static void at91_emac_mdio_write(struct net_device *ndev, __u8 addr, __u8 reg, _
 static int __init at91_emac_init_ring(struct at91_emac *emac)
 {
 	int i;
-	__u32 dma_buff_base;
+	unsigned long dma_rx_queue, dma_tx_queue;
+	unsigned long dma_buff_base;
 
 	// init RX ring buffer
-	dma_buff_base = (__u32)malloc(RX_BUFF_LEN * RX_BUFF_NUM);
-	// if 0
-
-	emac->rx_head = emac->rx_queue = (struct emac_buff_desc *)malloc(8 * RX_BUFF_NUM);
+	dma_alloc_coherent(RX_BUFF_LEN * RX_BUFF_NUM, &dma_buff_base);
 	// if null
+
+	void *cpu_rx_queue = dma_alloc_coherent(sizeof(struct emac_buff_desc) * RX_BUFF_NUM, &dma_rx_queue);
+	// if null
+	emac->rx_head = emac->rx_queue = cpu_rx_queue;
 
 	for (i = 0; i < RX_BUFF_NUM; i++) {
 		emac->rx_queue[i].addr = dma_buff_base;
@@ -189,8 +191,12 @@ static int __init at91_emac_init_ring(struct at91_emac *emac)
 
 	emac->rx_queue[RX_BUFF_NUM - 1].addr |= 0x2;
 
+	at91_emac_writel(EMAC_RBQP, dma_rx_queue);
+
 	// init TX ring buffer
-	emac->tx_rear = emac->tx_queue = (struct emac_buff_desc *)malloc(8 * TX_BUFF_NUM);
+	void *cpu_tx_queue = dma_alloc_coherent(sizeof(struct emac_buff_desc) * TX_BUFF_NUM, &dma_tx_queue);
+	// if null
+	emac->tx_rear = emac->tx_queue = cpu_tx_queue;
 
 	for (i = 0; i < TX_BUFF_NUM; i++) {
 		emac->tx_queue[i].addr = 0;
@@ -199,8 +205,7 @@ static int __init at91_emac_init_ring(struct at91_emac *emac)
 
 	emac->tx_queue[TX_BUFF_NUM - 1].stat |= 1 << 30;
 
-	at91_emac_writel(EMAC_RBQP, (__u32)emac->rx_queue);
-	at91_emac_writel(EMAC_TBQP, (__u32)emac->tx_queue);
+	at91_emac_writel(EMAC_TBQP, dma_tx_queue);
 
 	DPRINT("RX buff = 0x%08x, TX buff = 0x%08x\n",
 		emac->rx_queue, emac->tx_queue);
