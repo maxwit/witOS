@@ -833,7 +833,7 @@ static void change_sym_value(struct menu *menu, gint col)
 			display_list();
 		}
 		else if (view_mode == SINGLE_VIEW)
-			display_tree_part();	//fixme: keep exp/coll
+			display_tree_part();	//FIXME: keep exp/coll
 		break;
 	case S_INT:
 	case S_HEX:
@@ -856,7 +856,7 @@ static void toggle_sym_value(struct menu *menu)
 		display_list();
 	}
 	else if (view_mode == SINGLE_VIEW)
-		display_tree_part();	//fixme: keep exp/coll
+		display_tree_part();	//FIXME: keep exp/coll
 }
 
 static gint column2index(GtkTreeViewColumn * column)

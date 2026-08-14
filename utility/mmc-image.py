@@ -115,10 +115,10 @@ if __name__ == "__main__":
 		print "witrom.bin does not exists"
 		sys.exit()
 
-	if os.path.exists("g-bios.bin"):
-		bh_image = "g-bios.bin"
+	if os.path.exists("witOS.bin"):
+		bh_image = "witOS.bin"
 	else:
-		print "g-bios.bin does not exists"
+		print "witOS.bin does not exists"
 		sys.exit()
 
 	if os.path.exists(sd_image_name):

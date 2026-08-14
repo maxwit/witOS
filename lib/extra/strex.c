@@ -91,7 +91,7 @@ int val_to_hex_str(char *str, unsigned long val)
 	return j;
 }
 
-// fixme: merge the following 2 functions into 1
+// FIXME: merge the following 2 functions into 1
 int dec_str_to_long(const char *str, long *val)
 {
 	long tmp = 0;
@@ -325,7 +325,7 @@ int ip_to_str(char buf[], const __u32 ip)
 	return 0;
 }
 
-// fixme!
+// FIXME!
 int str_to_mac(__u8 mac[], const char *str)
 {
 	int i, j;

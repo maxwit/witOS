@@ -39,7 +39,7 @@ static int omap3_set_vmode(struct display *disp, const struct lcd_vmode *vm)
 	dss_writel(DISPC_GFX_POSITION, 0);
 	dss_writel(DISPC_GFX_SIZE, (vm->height - 1) << 16 | (vm->width - 1));
 
-	// fixme
+	// FIXME
 	switch (disp->pix_fmt) {
 	case PIX_RGB16:
 		val = 0x6;
@@ -85,7 +85,7 @@ static int __init omap3_disp_probe(struct platform_device *pdev)
 	dss_writel(DISPC_SYSCONFIG, 0x02);
 	for (to = 0; to < OMAP_TIMEOUT; to++) {
 		val = dss_readl(DISPC_SYSCONFIG);
-		if (!(val & 0x2)) // fixme
+		if (!(val & 0x2)) // FIXME
 			break;
 
 		udelay(0x100);

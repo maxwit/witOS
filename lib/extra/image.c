@@ -18,7 +18,7 @@ typedef union {
 	__u8 asBytes[8];
 } YAFFS_TAGS_UNION;
 
-//fixme: tmp code
+//FIXME: tmp code
 static struct nand_oob_layout g_yaffs_oob =
 {
 	.ecc_code_len = 6,
@@ -105,7 +105,7 @@ image_t image_type_detect(const void *data, size_t size)
 	}
 
 	if (GBH_MAGIC == *(const __u32 *)(data + GBH_MAGIC_OFFSET)) {
-		GEN_DBG("g-bios image\n");
+		GEN_DBG("witOS image\n");
 		return IMG_GBH;
 	}
 

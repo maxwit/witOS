@@ -60,13 +60,13 @@ static __u8 nand_read_u8(struct nand_ctrl *nfc)
 	return readb(nfc->data_reg);
 }
 
-// fixme:
+// FIXME:
 static __u8 nand_read_u16(struct nand_ctrl *nfc)
 {
 	return (__u8) cpu_to_le16(readw(nfc->data_reg));
 }
 
-// fixme:
+// FIXME:
 static __u16 nand_read_u16ex(struct nand_ctrl *nfc)
 {
 	return readw(nfc->data_reg);
@@ -322,7 +322,7 @@ static void nand_command_small(struct nand_chip *nand,
 		break;
 	}
 
-	// fixme
+	// FIXME
 	udelay(nfc->chip_delay);
 
 	nand_wait_ready(nand);
@@ -392,7 +392,7 @@ static void nand_command_large(struct nand_chip *nand,
 
 		nfc->cmd_ctrl(nand, NAND_CMMD_STATUS, NAND_NCE | NAND_CLE | NAND_CTRL_CHANGE);
 		nfc->cmd_ctrl(nand, NAND_CMMD_NONE, NAND_NCE | NAND_CTRL_CHANGE);
-		while (!(nfc->read_byte(nfc) & NAND_STATUS_READY)); // fixme
+		while (!(nfc->read_byte(nfc) & NAND_STATUS_READY)); // FIXME
 
 		return;
 
@@ -421,13 +421,13 @@ static void nand_command_large(struct nand_chip *nand,
 	nand_wait_ready(nand);
 }
 
-// fixme
+// FIXME
 static int nand_wait(struct nand_chip *nand)
 {
 	int status, state, to;
 	struct nand_ctrl *nfc = nand->master;
 
-	// fixme: tWB
+	// FIXME: tWB
 	// ndelay(100);
 	ndelay(nfc->chip_delay);
 
@@ -794,7 +794,7 @@ static int nand_read_oob_std(struct nand_chip *nand, int page, int sndcmd)
 
 	nfc->read_buff(nfc, nand->oob_buf, mtd->oob_size);
 
-	return sndcmd; // fixme
+	return sndcmd; // FIXME
 }
 
 static int nand_write_oob_std(struct nand_chip *nand, int page)
@@ -836,7 +836,7 @@ static int nand_do_read_oob(struct nand_chip *nand, __u32 from, struct mtd_oob_o
 		return -EINVAL;
 	}
 
-	// fixme
+	// FIXME
 	if ((from >= mtd->chip_size ||
 		opt->ooboffs + readlen > ((mtd->chip_size >> mtd->write_shift) -
 		(from >> mtd->write_shift)) * len))
@@ -1154,7 +1154,7 @@ static int nand_do_write_oob(struct nand_chip *nand, __u32 to, struct mtd_oob_op
 		return -EINVAL;
 	}
 
-	// fixme
+	// FIXME
 	if ((to >= mtd->chip_size ||
 		opt->ooboffs + opt->ooblen >
 			((mtd->chip_size >> mtd->write_shift) -
@@ -1181,7 +1181,7 @@ static int nand_do_write_oob(struct nand_chip *nand, __u32 to, struct mtd_oob_op
 	nand_fill_oob(nand, opt->oobbuf, opt);
 
 	status = nfc->write_oob(nand, page & nand->page_num_mask);
-	// fixme
+	// FIXME
 	memset(nand->oob_buf, 0xFF, mtd->oob_size);
 
 	if (status)
@@ -1233,11 +1233,11 @@ static void erase_block_ex(struct nand_chip *nand, int page)
 	nfc->command(nand, NAND_CMMD_ERASE2, -1, -1);
 }
 
-// fixme: static
+// FIXME: static
 int nand_erase(struct nand_chip *nand, struct erase_info *opt)
 {
 	int page_index, erase_count;
-	int status, nPagesPerBlock, ret, chipnr = nand->bus_idx; // fixme!
+	int status, nPagesPerBlock, ret, chipnr = nand->bus_idx; // FIXME!
 	struct mtd_info *mtd = NAND_TO_FLASH(nand);
 	struct nand_ctrl *nfc = nand->master;
 
@@ -1247,7 +1247,7 @@ int nand_erase(struct nand_chip *nand, struct erase_info *opt)
 	DPRINT("%s(): start = 0x%08x, size = 0x%08x\n",
 			__func__, opt->addr, opt->len);
 
-	// fixme
+	// FIXME
 	if (opt->addr & (mtd->erase_size - 1)) {
 		printf("%s(): erase start not aligned! (0x%08x)\n", __func__, opt->addr);
 		return -EINVAL;
@@ -1289,7 +1289,7 @@ int nand_erase(struct nand_chip *nand, struct erase_info *opt)
 	opt->state = FLASH_ERASING;
 
 	while (erase_count) {
-		if (!(opt->flags & EDF_ALLOWBB)) {	// fixme!
+		if (!(opt->flags & EDF_ALLOWBB)) {	// FIXME!
 			if (nand_check_blk_bad(nand, page_index << mtd->write_shift, false)) {
 				printf("\n%s(): try to erase a bad block at 0x%08x!\n",
 					__func__, page_index << mtd->write_shift);
@@ -1311,7 +1311,7 @@ int nand_erase(struct nand_chip *nand, struct erase_info *opt)
 			opt->fail_addr = page_index << mtd->write_shift;
 
 			printf("\n%s(): Failed @ page 0x%08x\n", __func__, page_index);
-			// fixme!!
+			// FIXME!!
 			goto erase_exit;
 		}
 
@@ -1319,7 +1319,7 @@ int nand_erase(struct nand_chip *nand, struct erase_info *opt)
 			rewrite_bbt[chipnr] = page_index << mtd->write_shift;
 
 		if (opt->flags & EDF_JFFS2) {
-			// fixme
+			// FIXME
 			static struct jffs2_clean_mark cleanmark = {
 				0x1985,
 				0x2003
@@ -1438,7 +1438,7 @@ struct nand_ctrl *nand_ctrl_new(void)
 	nfc->wait_func      = nand_wait;
 	nfc->select_chip    = nand_chipsel;
 	nfc->read_byte      = nand_read_u8;
-	nfc->read_word      = nand_read_u16ex;  // fixme: remove it
+	nfc->read_word      = nand_read_u16ex;  // FIXME: remove it
 	nfc->block_bad      = nand_blk_bad;
 	nfc->block_markbad = nand_mark_blk_bad;
 	nfc->write_buff     = nand_write_buff;
@@ -1470,7 +1470,7 @@ static int probe_nand_chip(struct nand_chip *nand)
 	nfc->command(nand, NAND_CMMD_RESET, -1, -1);
 	nfc->command(nand, NAND_CMMD_READID, 0x00, -1);
 
-// fixme!
+// FIXME!
 #ifdef BUFF_IDR
 	{
 		__u8 nand_id[2];
@@ -1647,7 +1647,7 @@ static void delete_nand_chip(struct nand_chip *nand)
 	list_del(&nand->nand_node);
 
 	// mtd = NAND_TO_FLASH(nand);
-	// fixme: free all buffer.
+	// FIXME: free all buffer.
 	// free(mtd->part_tab);
 
 	free(nand);
@@ -1676,7 +1676,7 @@ ECC_MODE nand_set_ecc_mode(struct nand_ctrl *nfc, ECC_MODE new_mode)
 		nfc->write_page     = nand_write_page_hwecc;
 		nfc->curr_oob_layout = nfc->hard_oob_layout;
 
-		//nfc->nEccOobBytes = nfc->ecc_code_len;  // fixme
+		//nfc->nEccOobBytes = nfc->ecc_code_len;  // FIXME
 		if (!nfc->hard_oob_layout) {
 			printf("Invalid Hardware ECC!\n");
 			return -EINVAL;
@@ -1755,7 +1755,7 @@ struct nand_chip *nand_probe(struct nand_ctrl *nfc, int bus_idx)
 	if (ret < 0)
 		goto not_found;
 
-	// fixme
+	// FIXME
 	for (i = 0; g_nand_vendor_id[i].id; i++) {
 		if (g_nand_vendor_id[i].id == nand->vendor_id)
 			return nand;
@@ -1789,7 +1789,7 @@ int nand_register(struct nand_chip *nand)
 	mtd = NAND_TO_FLASH(nand);
 
 	snprintf(mtd->name, sizeof(mtd->name), "%s.%d",
-		nfc->name, nand->bus_idx /* fixme */);
+		nfc->name, nand->bus_idx /* FIXME */);
 
 	val_to_hr_str(mtd->chip_size, chip_size);
 	val_to_hr_str(mtd->erase_size, block_size);
@@ -1815,7 +1815,7 @@ int nand_register(struct nand_chip *nand)
 
 	// fix for name
 
-	mtd->chip_shift  = ffs(mtd->chip_size) - 1; //fixme: to opt ffs()
+	mtd->chip_shift  = ffs(mtd->chip_size) - 1; //FIXME: to opt ffs()
 	mtd->erase_shift = ffs(mtd->erase_size) - 1;
 	mtd->write_shift = ffs(mtd->write_size) - 1;
 
@@ -1866,7 +1866,7 @@ int nand_register(struct nand_chip *nand)
 	ret = flash_register(mtd);
 	if (ret < 0) {
 		printf("%s(): fail to register deivce!\n");
-		// fixme: destroy
+		// FIXME: destroy
 	}
 
 	if (nand->flags & NAND_SKIP_BBTSCAN)
@@ -1874,7 +1874,7 @@ int nand_register(struct nand_chip *nand)
 
 	printf("Scanning bad blocks:\n");
 	ret = nfc->scan_bad_block(nand);
-	// fixme
+	// FIXME
 	if (0 == ret)
 		printf("done!\n");
 	else

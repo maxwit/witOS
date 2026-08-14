@@ -170,7 +170,7 @@
 #define MAX_INTERNAL_IRQ INT_ADC
 #define INT_EINT(n)		(INT_ADC + 1 + (n))
 
-//fixme,not include external interrupt group1~group9
+//FIXME,not include external interrupt group1~group9
 #define MAX_IRQ_NUM	INT_EINT(27)
 
 #define EXTINT_LOWLEV	 (0x00)
@@ -277,7 +277,7 @@
 #define NF_STAT        0x28
 #define NF_MECC0       0x34
 
-// fixme
+// FIXME
 #define tALS  12
 #define tWP   12
 #define tALH  5
@@ -305,7 +305,7 @@
 #define CONFIG_UART_ENABLE_FIFO
 #define CURR_UART_BASE   (UART_BASE + CONFIG_UART_INDEX * 0x400)
 
-// fixme: to support CONFIG_DEFAULT_UART
+// FIXME: to support CONFIG_DEFAULT_UART
 #define s3c_uart_readb(reg)        readb(VA(UART_BASE + reg))
 #define s3c_uart_readl(reg)        readl(VA(UART_BASE + reg))
 #define s3c_uart_writeb(reg, val)  writeb(VA(UART_BASE + reg), val)
@@ -450,7 +450,7 @@
 #define ADMASYSADDR  0x58
 #define HCVER        0xfe
 
-// fixme
+// FIXME
 #define LCD_BASE  0x77100000
 
 #define MIFPCON   0x7410800C

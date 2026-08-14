@@ -1,5 +1,5 @@
 /**
- * lib1funcs.S: porting from gcc/linux and adapted for g-bios
+ * lib1funcs.S: porting from gcc/linux and adapted for witOS
  */
 
 #define ENTRY(name) \

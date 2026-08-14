@@ -102,7 +102,7 @@ static int s3c6410_spi_transfer(struct spi_slave *slave)
 			val |= 0x1;
 			writel(VA(CH_CFG), val);
 
-			// fixme
+			// FIXME
 			for (i = 0; i < 10; i++) {
 				val = readl(VA(SPI_STATUS));
 				printf("%s() line %d: status = 0x%08x (rx = 0x%x, tx = 0x%x)\n",
@@ -137,7 +137,7 @@ static int s3c6410_spi_transfer(struct spi_slave *slave)
 		#endif
 				writel(VA(CH_CFG), val);
 
-				// fixme
+				// FIXME
 				for (j = 0; j < 10; j++) {
 					val = readl(VA(SPI_STATUS));
 					irx = (val >> 13) & 0x7F;
@@ -157,11 +157,11 @@ static int s3c6410_spi_transfer(struct spi_slave *slave)
 					printf(" %02x", *rx_buf);
 				}
 				printf("\n");
-				s3c6410_spi_reset(NULL); // fixme
+				s3c6410_spi_reset(NULL); // FIXME
 			}
 		}
 
-		s3c6410_spi_reset(NULL); // fixme
+		s3c6410_spi_reset(NULL); // FIXME
 		list_del(msg_qu);
 	}
 

@@ -1,6 +1,7 @@
 #include <io.h>
 #include <irq.h>
 #include <init.h>
+#include <platform.h>
 #include <arm/s3c24x0.h>
 
 static struct resource dm9000_res[] = {
@@ -63,7 +64,7 @@ static int __init s3c2440_init(void)
 #ifdef CONFIG_IRQ_SUPPORT
 	s3c24x0_interrupt_init();
 
-	// fixme
+	// FIXME
 	irq_set_trigger(IRQ_EINT9, IRQ_TYPE_RISING);
 	irq_set_trigger(IRQ_EINT7, IRQ_TYPE_RISING);
 

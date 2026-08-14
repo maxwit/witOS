@@ -329,7 +329,7 @@ static int __init dm9000_probe(struct platform_device *pdev)
 	}
 
 	rev = dm9000_readb(DM9000_REV);
-	// fixme: "DM9000B"
+	// FIXME: "DM9000B"
 	switch (rev) {
 	case 0x18:
 	case 0x19:

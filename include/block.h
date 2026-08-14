@@ -9,7 +9,7 @@
 #define BDEV_NAME_FLASH  "mtdblock"
 #define BDEV_NAME_MMC    "mmcblk"
 #define BDEV_NAME_SCSI   "sd"
-#define BDEV_NAME_ATA    "hd" // fixme
+#define BDEV_NAME_ATA    "hd" // FIXME
 #define BDEV_NAME_NBD    "nbd"
 
 #define BDF_RDONLY       (1 << 0)

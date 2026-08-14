@@ -212,12 +212,12 @@
 	#define SPI_PTCR                   0x120
 	#define SPI_PTSR                   0x124
 
-// fixme!
+// FIXME!
 #define PIO_NAND      AT91SAM926X_PA_PIOC
 #define PIO_NAND_RDY  (0x1 << 15)
 #define PIO_NAND_CE   (0x1 << 14)
 
-// fixme
+// FIXME
 #define PID_AIC       0
 #define PID_SYSIRQ    1
 #define PID_PIOA      2

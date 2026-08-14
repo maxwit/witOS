@@ -487,13 +487,13 @@ static int DataFlashAdd(const char *pszName, __u32 nPages, __u32 page_size, __u3
 	//pDataFlash->page_size   = 1 << (nPageOffset - 1);
 	pDataFlash->page_size    = page_size;
 	pDataFlash->nPageShift   = nPageOffset;
-	pDataFlash->block_size   = pDataFlash->page_size << 3; // fixme: whether 8 is also correct for other dataflash
+	pDataFlash->block_size   = pDataFlash->page_size << 3; // FIXME: whether 8 is also correct for other dataflash
 	pDataFlash->nBlockShift  = pDataFlash->nPageShift + 3;
 	pDataFlash->ulChipSelect = 0;
 
 	flash = &pDataFlash->parent;
 	strcpy(pDataFlash->name, pszName);
-	strcpy(flash->name, pDataFlash->name);	// fixme : how to name this flash
+	strcpy(flash->name, pDataFlash->name);	// FIXME : how to name this flash
 
 	flash->type = MTD_DATAFLASH;
 
@@ -526,14 +526,14 @@ static int DataFlashAdd(const char *pszName, __u32 nPages, __u32 page_size, __u3
 	ulRet = flash_register(flash);
 	if (ulRet < 0) {
 		DPRINT("%s(): fail to register deivce %S!\n", __func__, flash->name);
-		// fixme: destroy
+		// FIXME: destroy
 
 		return ulRet;
 	}
 
 	printf("%s dataflash detected!\n", pszName);
 
-	// fixme: partition support may change
+	// FIXME: partition support may change
 	flash->nMbrAddr = MB(2) / 512 * 528;
 	flash->nMbrSize = flash->erase_size;
 
@@ -547,7 +547,7 @@ static int DataFlashAdd(const char *pszName, __u32 nPages, __u32 page_size, __u3
 
 		flash->read(flash, flash->nMbrAddr, nMbrLen, &nMbrLen, (__u8 *)pt_info);
 
-		// fixme: add partition checking
+		// FIXME: add partition checking
 		if (GB_MAGIC_MBR == pt_info->nMagic)
 			GuPartCreateAll(flash, pt_info->vParts, pt_info->nParts);
 		else {

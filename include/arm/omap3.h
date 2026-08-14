@@ -25,12 +25,12 @@
 
 int omap3_irq_init(void);
 
-// fixme: move to omapfb.h
+// FIXME: move to omapfb.h
 struct omapfb_panel {
 	int width, height;
 	int bpp;
 
-	// fixme
+	// FIXME
 	unsigned int hfp, hbp, hpw;
 	unsigned int vfp, vbp, vpw;
 };

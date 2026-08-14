@@ -10,8 +10,8 @@
 // #define MTD_DEV_NAME_LEN    32
 
 #define MAX_FLASH_PARTS	    16
-// #define DEF_VOL_ID          1  // fixme: default point to g-bios bottom half
-#define BOOT_FLASH_ID       0 // fixme
+// #define DEF_VOL_ID          1  // FIXME: default point to witOS bottom half
+#define BOOT_FLASH_ID       0 // FIXME
 
 #define FLASH_ABSENT		0
 #define FLASH_RAM			1
@@ -20,7 +20,7 @@
 #define MTD_NANDFLASH		4
 #define MTD_DATAFLASH		6
 #define MTD_UBIVOLUME		7
-#define FLASH_FLASH_PART   (1 << 6) // fixme
+#define FLASH_FLASH_PART   (1 << 6) // FIXME
 
 #define MTD_WRITEABLE		0x400	/* Device is writeable */
 #define MTD_BIT_WRITEABLE	0x800	/* Single bits can be flipped */
@@ -106,7 +106,7 @@ struct erase_info {
 	u_long priv;
 	u_char state;
 	struct erase_info *next;
-	__u32 flags; // fixme
+	__u32 flags; // FIXME
 };
 
 #if 0
@@ -184,11 +184,11 @@ struct mtd_info {
 	};
 
 	int   type;
-	char  name[MTD_ID_NAME_LEN]; // fixme: no need for slaves
+	char  name[MTD_ID_NAME_LEN]; // FIXME: no need for slaves
 
 	size_t write_size;
 	size_t erase_size;
-	size_t chip_size; // fixme
+	size_t chip_size; // FIXME
 
 	__u32 write_shift;
 	__u32 erase_shift;
@@ -212,7 +212,7 @@ struct mtd_info {
 
 	int (*block_isbad)(struct mtd_info *, __u32);
 	int (*block_markbad)(struct mtd_info *, __u32);
-	int (*scan_bad_block)(struct mtd_info *); // fixme: to be removed
+	int (*scan_bad_block)(struct mtd_info *); // FIXME: to be removed
 
 	OOB_MODE oob_mode;
 	//

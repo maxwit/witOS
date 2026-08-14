@@ -1,6 +1,6 @@
 /*
  *  copy from linux/include/asm/setup.h
- *  fixme: restore to app/boot/
+ *  FIXME: restore to app/boot/
  */
 
 #pragma once
@@ -158,7 +158,7 @@ struct tag {
 
 typedef void (*LINUX_KERNEL_ENTRY)(int, int, unsigned long);
 
-// fixme: remove it!
+// FIXME: remove it!
 struct image_cache;
 
 struct tag *begin_setup_atag (void *tag_base);

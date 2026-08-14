@@ -18,7 +18,7 @@
 
 #define MODEM_TIMEOUT  (UART_DELAY * 8)
 
-// fixme: reset fifo
+// FIXME: reset fifo
 static void uart_clear_buff()
 {
 	__u8  tmp;

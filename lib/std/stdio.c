@@ -12,7 +12,7 @@ int putchar(int ch)
 	return ch;
 }
 
-//fixme: filter control word.
+//FIXME: filter control word.
 #if 0
 int getchar(void)
 {
@@ -54,7 +54,7 @@ char *gets(char *s)
 			break;
 		}
 
-#ifdef __GBIOS_VER__
+#ifdef __WITOS_VER__
 		if (*str == (char)127) {
 #else
 		if (*str == '\b' && str > s) {
@@ -242,7 +242,7 @@ get_sign :
 
 		base = 10;
 
-		//fixme:handle '%l(o,x,i,d)' and '%ll(o,x,i,d)',filter 'l' and 'll'
+		//FIXME:handle '%l(o,x,i,d)' and '%ll(o,x,i,d)',filter 'l' and 'll'
 		if (('l' == *fmt) && ('l' == *++fmt))
 			fmt++;
 
@@ -331,7 +331,7 @@ int sprintf(char *buf, const char *fmt, ...)
 	return printed;
 }
 
-// fixme:
+// FIXME:
 // 1. add %p support
 // 2. add error msg when format not supported yet
 // 3. enable GCC format checking
@@ -431,7 +431,7 @@ get_sign :
 
 		base = 10;
 
-		//fixme:handle '%l(o,x,i,d)' and '%ll(o,x,i,d)',filter 'l' and 'll'
+		//FIXME:handle '%l(o,x,i,d)' and '%ll(o,x,i,d)',filter 'l' and 'll'
 		if (('l' == *fmt) && ('l' == *++fmt))
 			fmt ++;
 

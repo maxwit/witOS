@@ -110,7 +110,7 @@ static void s3c6410_irq_umask(__u32 irq)
 
 static void s3c6410_irq_ack(__u32 irq)
 {
-	//fixme, should deal with the INT_EINT12 ~ 19 and GROUP1 ~ GROUP9
+	//FIXME, should deal with the INT_EINT12 ~ 19 and GROUP1 ~ GROUP9
 	if ((irq >= INT_EINT(0)) && (irq <= INT_EINT(11))) {
 		irq -= INT_EINT(0);
 		writel(VA(EINT0PEND), 0x1UL << irq);

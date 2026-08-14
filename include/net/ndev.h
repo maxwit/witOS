@@ -44,9 +44,9 @@ struct net_device {
 	struct ndev_stat stat;
 	struct link_status link;
 
-	//
-	int (*send_packet)(struct net_device *ndev, struct sock_buff *skb);
 	int (*set_mac_addr)(struct net_device *ndev, const __u8 mac[]);
+	// transmit & receive
+	int (*send_packet)(struct net_device *ndev, struct sock_buff *skb);
 #ifndef CONFIG_IRQ_SUPPORT
 	int (*ndev_poll)(struct net_device *ndev);
 #endif

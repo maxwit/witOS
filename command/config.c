@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 #define LEN 128
-// fixme
+// FIXME
 #define MAX_OPT 5
 
 struct conf_opt {

@@ -294,7 +294,7 @@ struct dentry {
 	struct super_block *d_sb;
 	struct dentry *d_parent;
 	struct list_head d_subdirs, d_child;
-	// int d_type; // fixme
+	// int d_type; // FIXME
 };
 
 struct dentry *__d_alloc(struct super_block *sb, const struct qstr *str);
@@ -317,7 +317,7 @@ struct linux_dirent {
 	unsigned long  d_ino;	  /* Inode number */
 	unsigned long  d_off;	  /* Offset to next linux_dirent */
 	unsigned short d_reclen;  /* Length of this linux_dirent */
-	unsigned char  d_type;    // fixme
+	unsigned char  d_type;    // FIXME
 	char		   d_name[256];  /* Filename (null-terminated) */
 	/* length is actually (d_reclen - 2 - offsetof(struct linux_dirent, d_name) */
 };
@@ -342,7 +342,7 @@ struct super_block {
 
 struct super_block *sget(struct file_system_type *type, void *data);
 
-// fixme
+// FIXME
 int get_unused_fd();
 int fd_install(int fd, struct file *fp);
 struct file *fget(unsigned int fd);
@@ -363,7 +363,7 @@ int follow_up(struct path *path);
 int vfs_mkdir(struct inode *dir, struct dentry *dentry, int mode);
 int vfs_mknod(struct inode *dir, struct dentry *dentry, int mode, dev_t devt);
 
-// fixme
+// FIXME
 int dev_mknod(const char * path,int mode,dev_t devt);
 
 struct dentry *mount_bdev(struct file_system_type *, int, const char *,
@@ -376,7 +376,7 @@ static inline void inode_dec_link_count(struct inode *inode)
 	inode->i_nlink--;
 }
 
-// fixme: to be moved
+// FIXME: to be moved
 static inline u16 old_encode_dev(dev_t dev)
 {
 	return (MAJOR(dev) << 8) | MINOR(dev);

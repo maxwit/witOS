@@ -3,7 +3,7 @@
 #include <types.h>
 #include <list.h>
 
-// fixme
+// FIXME
 #define	PF_INET		2
 #define	AF_INET		PF_INET
 #define INADDR_ANY  0
@@ -51,7 +51,7 @@ enum {
 	SA_DST
 };
 
-// fixme
+// FIXME
 enum tcp_state {
 	TCPS_CLOSED,
 	TCPS_LISTEN,
@@ -71,7 +71,7 @@ struct socket {
 	int protocol;
 	int obstruct_flags;
 	struct list_head tx_qu, rx_qu;
-	struct sockaddr_in saddr[2]; // fixme: sockaddr instead
+	struct sockaddr_in saddr[2]; // FIXME: sockaddr instead
 	enum tcp_state state;
 	// int tmp;
 	__u32 seq_num, ack_num;

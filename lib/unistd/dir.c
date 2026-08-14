@@ -39,7 +39,7 @@ char * GAPI get_current_dir_name()
 	if (ret < 0)
 		return NULL;
 
-	cwd[PATH_MAX - 1] = '\0'; // fixme!
+	cwd[PATH_MAX - 1] = '\0'; // FIXME!
 	return strdup(cwd);
 }
 
@@ -69,7 +69,7 @@ struct dirent * GAPI readdir(DIR *dir)
 
 	assert(dir);
 
-	ret = sys_getdents(dir->fd, &lde, 1); // fixme
+	ret = sys_getdents(dir->fd, &lde, 1); // FIXME
 	if (ret <= 0) {
 		return NULL;
 	}
@@ -81,7 +81,7 @@ struct dirent * GAPI readdir(DIR *dir)
 	de->d_ino    = lde.d_ino;
 	de->d_off    = lde.d_off;
 	de->d_reclen = lde.d_reclen;
-	de->d_type   = lde.d_type; // fixme
+	de->d_type   = lde.d_type; // FIXME
 	strcpy(de->d_name, lde.d_name);
 
 	return de;
@@ -97,7 +97,7 @@ int GAPI closedir(DIR *dir)
 	return 0;
 }
 
-int GAPI mkdir(const char *name, unsigned int /*fixme*/ mode)
+int GAPI mkdir(const char *name, unsigned int /*FIXME*/ mode)
 {
 	return sys_mkdir(name, mode);
 }

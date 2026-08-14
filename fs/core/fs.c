@@ -114,7 +114,7 @@ struct inode *iget(struct super_block *sb, unsigned long ino)
 	struct inode *inode;
 	// TODO: search
 
-	inode = zalloc(sizeof(*inode)); // fixme
+	inode = zalloc(sizeof(*inode)); // FIXME
 	// if null
 
 	inode->i_sb = sb;
@@ -192,7 +192,7 @@ void get_fs_pwd(struct path *pwd)
 	*pwd = g_fs.pwd;
 }
 
-long sys_mkdir(const char *name, unsigned int /*fixme*/ mode)
+long sys_mkdir(const char *name, unsigned int /*FIXME*/ mode)
 {
 	int ret;
 	struct nameidata nd;
@@ -203,7 +203,7 @@ long sys_mkdir(const char *name, unsigned int /*fixme*/ mode)
 
 	get_fs_pwd(&nd.path);
 
-	while ('/' == *name) name++; // fixme
+	while ('/' == *name) name++; // FIXME
 	unit.name = name;
 	unit.len = strlen(name);
 
@@ -211,7 +211,7 @@ long sys_mkdir(const char *name, unsigned int /*fixme*/ mode)
 
 	ret = vfs_mkdir(nd.path.dentry->d_inode, de, mode | S_IFDIR);
 	if (ret < 0) {
-		// fixme: use d_free() instead
+		// FIXME: use d_free() instead
 		list_del(&de->d_child);
 		free(de);
 	}

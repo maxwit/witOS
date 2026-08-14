@@ -11,7 +11,7 @@
 #define PROT_TCP  6
 #define PROT_UDP  17
 #define PROT_OSPF 89
-#define PROT_ETH	10 //fixme
+#define PROT_ETH	10 //FIXME
 
 #define ETH_TYPE_IP   CPU_TO_BE16(0x0800)
 #define ETH_TYPE_ARP  CPU_TO_BE16(0x0806)

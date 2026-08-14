@@ -6,7 +6,7 @@
 #include <net/net.h>
 #include <net/skb.h>
 
-// fixme!
+// FIXME!
 struct sock_buff *skb_alloc(__u32 prot_len, __u32 data_len)
 {
 	struct sock_buff *skb;
@@ -27,7 +27,7 @@ struct sock_buff *skb_alloc(__u32 prot_len, __u32 data_len)
 
 	INIT_LIST_HEAD(&skb->node);
 
-	// fixme!!
+	// FIXME!!
 	skb->ndev = ndev_get_first();
 	assert(skb->ndev);
 

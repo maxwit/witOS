@@ -26,7 +26,7 @@ int draw_char(struct display *disp, int x, int y, struct font_desc *font, __u32 
 
 	for (i = 0; i < font->height; i++) {
 		for (j = 0; j < font->width; j++) {
-			// fixme
+			// FIXME
 			if (is_dot(j, i, c, font))
 				buff[(i + y) * width + x + j] = color;
 		}
@@ -60,7 +60,7 @@ int set_screen(__u32 pixel)
 
 	for (i = 0; i < height; i++) {
 		for (j = 0; j < width; j++) {
-			// fixme
+			// FIXME
 			buff[i * width + j] = pixel;
 		}
 	}

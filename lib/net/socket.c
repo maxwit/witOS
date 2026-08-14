@@ -7,7 +7,7 @@
 #include <net/net.h>
 #include <net/skb.h>
 #include <fs.h>
-#include <uart/uart.h> // fixme: to be removed
+#include <uart/uart.h> // FIXME: to be removed
 
 #define MAX_SOCK_NUM  32
 
@@ -117,7 +117,7 @@ static struct sock_buff *sock_recv_packet(struct socket *sock)
 	return NULL;
 }
 
-// fixme: to be removed
+// FIXME: to be removed
 int qu_is_empty(int fd)
 {
 	__u32 __UNUSED__ psr;
@@ -160,9 +160,9 @@ alloc_sock:
 	}
 
 	sock->type = type;
-	if (SOCK_STREAM == type) { // fixme
+	if (SOCK_STREAM == type) { // FIXME
 		sock->state = TCPS_CLOSED;
-		sock->seq_num = 1; // fixme
+		sock->seq_num = 1; // FIXME
 		sock->ack_num = 0;
 	}
 	memset(sock->saddr, 0, sizeof(sock->saddr));
@@ -227,7 +227,7 @@ int sk_close(int fd)
 			return ret;
 	}
 
-	// fixme
+	// FIXME
 	if (TCPS_TIME_WAIT == sock->state) {
 		ret = tcp_wait_for_state(sock, TCPS_CLOSED);
 		if (ret < 0)
@@ -302,7 +302,7 @@ int bind(int fd, const struct sockaddr *addr, socklen_t len)
 		sin->sin_port = sa->sin_port ? sa->sin_port : htons(port_alloc(sock->type));
 
 		if (sa->sin_addr.s_addr == htonl(INADDR_ANY)) {
-			// fixme: to find the best ndev
+			// FIXME: to find the best ndev
 			ndev = ndev_get_first();
 			sin->sin_addr.s_addr = ndev->ip;
 		} else {
@@ -375,7 +375,7 @@ ssize_t recvfrom(int fd, void *buf, __u32 n, int flags,
 	if(NULL == skb)
 		return 0;
 
-	// fixme !
+	// FIXME !
 	pkt_len = min(skb->size, n);
 	memcpy(buf, skb->data, pkt_len);
 

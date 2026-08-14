@@ -144,7 +144,7 @@ void tcp_send_packet(struct sock_buff *skb, __u8 flags, struct tcp_option *opt)
 	tcp_hdr->reserve  = 0;
 	tcp_hdr->flags    = flags;
 #endif
-	// fixme!!!
+	// FIXME!!!
 	if (flags & FLG_ACK)
 		tcp_hdr->win_size = htons(457);
 	else
@@ -511,7 +511,7 @@ int ip_send_packet(struct sock_buff *skb, __u8 prot)
 	ip_hdr = (struct ip_header *)skb->data;
 
 	ip_hdr->ver_len   = 0x45;
-	ip_hdr->tos       = 0; // fixme
+	ip_hdr->tos       = 0; // FIXME
 	ip_hdr->total_len = htons((__u16)skb->size);
 	ip_hdr->id        = htons(ip_id); //
 	ip_hdr->flag_frag = htons(0x4000);

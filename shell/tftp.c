@@ -3,7 +3,7 @@
 static struct option tftp_get_option[] = {
 	{
 		.opt = "-r <URL>",
-		.desc = " remote URL, i.e. \"10.0.0.2:69/g-bios.bin\".",
+		.desc = " remote URL, i.e. \"10.0.0.2:69/witOS.bin\".",
 	},
 	{
 		.opt = "-l <path>",
@@ -31,7 +31,7 @@ static struct option tftp_get_option[] = {
 static struct option tftp_put_option[] = {
 	{
 		.opt = "-r <URL>",
-		.desc = " remote URL, i.e. \"10.0.0.2:69/g-bios.bin\".",
+		.desc = " remote URL, i.e. \"10.0.0.2:69/witOS.bin\".",
 	},
 	{
 		.opt = "-l <path>",

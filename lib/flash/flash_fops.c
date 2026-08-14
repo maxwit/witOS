@@ -7,7 +7,7 @@
 #include <fs.h>
 #include <mtd/mtd.h>
 
-// fixme
+// FIXME
 static inline int __flash_read(struct mtd_info *mtd, void *buff, int count, int start)
 {
 	int ret;
@@ -302,7 +302,7 @@ static ssize_t flash_write(struct file *fp, const void *buff, size_t size, loff_
 	struct block_buff   *blk_buff;
 	struct block_device *bdev = &mtd->bdev;
 
-	// fixme: to be removed
+	// FIXME: to be removed
 	if (0 == size)
 		return 0;
 
@@ -332,7 +332,7 @@ static ssize_t flash_write(struct file *fp, const void *buff, size_t size, loff_
 			switch (mtd->oob_mode) {
 			case FLASH_OOB_RAW:
 			case MTD_OPS_AUTO_OOB:
-				// fixme: use macro: RATIO_TO_PAGE(n)
+				// FIXME: use macro: RATIO_TO_PAGE(n)
 				// size_adj = blk_buff->blk_size / (mtd->write_size + mtd->oob_size) << mtd->write_shift;
 				flash_pos = fp->f_pos / (mtd->write_size + mtd->oob_size) << mtd->write_shift;
 				break;
@@ -376,7 +376,7 @@ static ssize_t flash_write(struct file *fp, const void *buff, size_t size, loff_
 
 			fp->f_pos += blk_buff->blk_size;
 			blk_buff->blk_off = blk_buff->blk_base;
-		} else { // fixme: symi write
+		} else { // FIXME: symi write
 			memcpy(blk_buff->blk_off, buff, size);
 			blk_buff->blk_off += size;
 			size = 0;
@@ -408,7 +408,7 @@ static int flash_close(struct file *fp)
 			break;
 
 		case FLASH_OOB_PLACE:
-		default: // fixme
+		default: // FIXME
 			flash_pos = fp->f_pos;
 			break;
 		}

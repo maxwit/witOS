@@ -3,7 +3,7 @@
 #include <platform.h>
 #include <arm/at91sam926x.h>
 
-// fixme
+// FIXME
 #define CONFIG_DM9000_PIO_RESET  PIOC
 #define CONFIG_DM9000_PIN_RESET  (1 << 10)
 

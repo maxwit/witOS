@@ -4,7 +4,7 @@ board.id = devkit8000
 linux.root = /dev/mtdblock4
 linux.console = ttyO
 
-flash.parts = omap2-nand.0:128K(witrom),2M(g-bios),3M(linux),64M(rootfs),64M(user),-(data)
+flash.parts = omap2-nand.0:128K(witrom),2M(witOS),3M(linux),64M(rootfs),64M(user),-(data)
 flash.nand.ecc_mode = NAND_ECC_HW
 
 display.lcd.model = VGA

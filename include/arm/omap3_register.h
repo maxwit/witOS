@@ -23,7 +23,7 @@
 #define CM_ICLKEN_DSS      CM_CLK_REG(0xE10)
 #define CM_CLKSEL_DSS       CM_CLK_REG(0xE40)
 
-// fixme!
+// FIXME!
 #define PADCONF_UART1_TX   0x4800217C
 #define PADCONF_UART1_CTS  0x48002180
 
@@ -46,7 +46,7 @@
 #define PLL_LOCK        7
 #define PLL_LOW_POWER_BYPASS   5
 
-// fixme!
+// FIXME!
 #define UART1_BASE    0x4806A000
 #define UART2_BASE    0x4806C000
 #define UART3_BASE    0x49020000

@@ -167,7 +167,7 @@ static struct dentry *devfs_mount(struct file_system_type *fs_type,
 	return root;
 }
 
-// fixme
+// FIXME
 static void devfs_kill_sb(struct super_block *sb)
 {
 }

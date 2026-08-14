@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 
 		if (len < BUF_LEN)
 			break;
-		// fixme
+		// FIXME
 	}
 
 	fsync(fd_mmc);

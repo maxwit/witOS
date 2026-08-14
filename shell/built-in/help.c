@@ -11,7 +11,7 @@ int help(int argc, char *argv[])
 
 	switch (argc) {
 	case 1:
-		printf("\ng-bios commands:\n");
+		printf("\nwitOS commands:\n");
 
 		for (exe = g_exe_begin; exe < g_exe_end; exe++)
 			printf("  %-8s\n", exe->name);

@@ -34,7 +34,7 @@ static int __init lan9220_device_init(struct platform_device *pdev)
 	return 0;
 }
 
-// fixme: __initdata
+// FIXME: __initdata
 static struct resource lan9220_res[] = {
 	[0] = {
 		.start = 0x28000000,
@@ -67,7 +67,7 @@ static struct resource oampfb_res[] = {
 	},
 };
 
-// fixme
+// FIXME
 static struct omapfb_panel evm_panel = {1280, 800};
 
 static struct platform_device omapfb_device = {
@@ -81,7 +81,7 @@ static struct platform_device omapfb_device = {
 };
 #endif
 
-// fixme: __INITDATA__
+// FIXME: __INITDATA__
 static struct platform_device *evm3530_devices[] = {
 #ifdef CONFIG_LAN9220
 	&lan9220_device,

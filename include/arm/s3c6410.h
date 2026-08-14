@@ -32,7 +32,7 @@
 #define HCLK_RATE   (MPLL_RATE / 2)
 #define PCLK_RATE   (HCLK_RATE / 2)
 
-// fixme
+// FIXME
 #define ATAG_BASE          SDRAM_BASE
 
 #define INITRD_BASE_ADDR   (SDRAM_BASE + SDRAM_SIZE / 4)

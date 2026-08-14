@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <malloc.h>
 #include <dirent.h>
-// fixme: to be removed
+// FIXME: to be removed
 #include <net/net.h>
 #include <uart/uart.h>
 #include <fs/devfs.h>
@@ -59,7 +59,7 @@ static char shell_getchar(void)
 	return ch;
 }
 
-// fixme
+// FIXME
 static void inline cmd_backspace(void)
 {
 	printf("\033[D\033[1P");
@@ -72,7 +72,7 @@ static inline void show_prompt(void)
 	cwd = get_current_dir_name();
 	assert (cwd != NULL);
 
-	printf("g-bios: %s# ", cwd);
+	printf("witOS: %s# ", cwd);
 }
 
 static int inline get_pre_space_count(char *buf)
@@ -397,7 +397,7 @@ static int command_read_line(char buf[])
 		printf("\033[4h");
 		while (input_c != '\r' && input_c != '\n') {
 			input_c = shell_getchar();
-			//fixme: support F1 F2 F3 ...
+			//FIXME: support F1 F2 F3 ...
 			if (input_c == '\033') {
 				spec_key = 1;
 				input_c = shell_getchar();
@@ -461,7 +461,7 @@ static int command_read_line(char buf[])
 						ret = cmd_down_key(buf, &cur_pos, &hst_pos, &cur_max);
 
 					if (ret < 0)
-						// fixme: do something
+						// FIXME: do something
 						;
 				} else // not a up/down key, treat it as a normal input
 					print_input(input_c, buf, &cur_pos, &cur_max);
@@ -577,7 +577,7 @@ static int command_translate(const char *command_line, char *argv[])
 			if (flag == 0) {
 				argv[argc] = cmd_line + i + 1;
 				flag = 2;
-			} else if (flag == 1) { // fixme
+			} else if (flag == 1) { // FIXME
 				printf("Invalid! (forget space?)\n");
 				return -EINVAL;
 			} else {
@@ -646,7 +646,7 @@ static inline const struct help_info *get_help(const char *name)
 	return NULL;
 }
 
-// fixme: move to task.c
+// FIXME: move to task.c
 int exec(int argc, char *argv[])
 {
 	int ret;
@@ -654,7 +654,7 @@ int exec(int argc, char *argv[])
 	struct task *current;
 	int (*main)(int, char *[]);
 
-	// fixme
+	// FIXME
 	for (exe = build_in_cmd; exe < build_in_cmd + ARRAY_ELEM_NUM(build_in_cmd); exe++) {
 		if (!strncmp(exe->name, argv[0], MAX_ARG_LEN)) {
 			goto L1;
@@ -668,7 +668,7 @@ int exec(int argc, char *argv[])
 	}
 
 	printf("  command \"%s\" not found!\n"
-		   "  Please use \"help\" to get g-bios command list.\n", argv[0]);
+		   "  Please use \"help\" to get witOS command list.\n", argv[0]);
 	return -ENOEXEC;
 
 L1:
@@ -683,7 +683,7 @@ L1:
 	current->argc = argc;
 	current->argv = argv;
 	current->exe  = exe;
-	current->help = get_help(argv[0]); // fixme
+	current->help = get_help(argv[0]); // FIXME
 	set_current_task(current);
 
 	getopt_init();

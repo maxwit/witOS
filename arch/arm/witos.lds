@@ -20,24 +20,24 @@ SECTIONS
 		g_exe_end = .;
 	}
 
-	.gbios_init ALIGN(4):
+	.witos_init ALIGN(4):
 	{
 		*(.code.init)
 		*(.data.init)
 		init_call_begin = .;
-		*(.Level0.gbios_init)
-		*(.Level1.gbios_init)
-		*(.Level2.gbios_init)
-		*(.Level3.gbios_init)
-		*(.Level4.gbios_init)
-		*(.Level5.gbios_init)
+		*(.Level0.witos_init)
+		*(.Level1.witos_init)
+		*(.Level2.witos_init)
+		*(.Level3.witos_init)
+		*(.Level4.witos_init)
+		*(.Level5.witos_init)
 		init_call_end = .;
 	}
 
-	.gbios_font ALIGN(4):
+	.witos_font ALIGN(4):
 	{
 		font_list_begin = .;
-		*(.gbios_font)
+		*(.witos_font)
 		font_list_end = .;
 	}
 

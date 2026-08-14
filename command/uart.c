@@ -41,7 +41,7 @@ static int uart_load(int argc, char *argv[])
 		case 'i':
 		case 'f':
 
-			// fixme
+			// FIXME
 
 			break;
 
@@ -102,7 +102,7 @@ static int uart_setup(int argc ,char *argv[])
 	while ((opt = getopt(argc, argv, "hi:")) != -1) {
 		switch (opt) {
 		case 'i':
-			// fixme
+			// FIXME
 			flag = 1;
 
 			break;
@@ -118,7 +118,7 @@ static int uart_setup(int argc ,char *argv[])
 	}
 
 	if (flag == 1) {
-		// fixme
+		// FIXME
 	} else {
 		usage();
 	}
@@ -153,7 +153,7 @@ static int uart_send(int argc ,char *argv[])
 		case 'i':
 		case 'f':
 
-			// fixme
+			// FIXME
 
 			break;
 
@@ -166,7 +166,7 @@ static int uart_send(int argc ,char *argv[])
 		}
 	}
 
-	// fixme
+	// FIXME
 
 	return 0;
 }
@@ -198,7 +198,7 @@ static int uart_test(int argc ,char *argv[])
 		case 'i':
 		case 'f':
 
-			// fixme
+			// FIXME
 
 			break;
 
@@ -211,7 +211,7 @@ static int uart_test(int argc ,char *argv[])
 		}
 	}
 
-	// fixme
+	// FIXME
 
 	return 0;
 }

@@ -35,7 +35,7 @@ static int info(int argc, char *argv[])
 	dev = get_current_dir_name();
 	fd = open(dev, O_RDONLY);
 
-	ret = ioctl(fd, 0 /*fixme*/, &part);
+	ret = ioctl(fd, 0 /*FIXME*/, &part);
 	if (ret < 0) {
 		printf("fail to get parition info! (ret = %d)\n", ret);
 		// return ret;
@@ -123,7 +123,7 @@ static int read_write(int argc, char *argv[])
 		return -EINVAL;
 	}
 
-	// fixme
+	// FIXME
 	getcwd(bdev_name, sizeof(bdev_name));
 	fd = open(bdev_name, O_RDWR);
 	if (fd < 0) {
@@ -419,7 +419,7 @@ L1:
 }
 
 
-// fixme: bad logic!
+// FIXME: bad logic!
 static int erase(int argc, char *argv[])
 {
 	int ch;

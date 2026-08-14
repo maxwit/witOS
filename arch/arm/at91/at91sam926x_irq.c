@@ -119,7 +119,7 @@ int __init at91sam926x_interrupt_init(void)
 		irq_set_handler(PIO_IRQ_OFFSET + i, at91sam926x_gpio_irqparse, 1);
 	}
 
-	irq_enable(); // fixme
+	irq_enable(); // FIXME
 
 	return 0;
 }

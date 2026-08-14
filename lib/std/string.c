@@ -80,7 +80,7 @@ int strncmp(const char *pstr1, const char *pstr2, size_t count)
 	return *pstr1 - *pstr2;
 }
 
-// fixme!!
+// FIXME!!
 int strcasecmp (const char *pstr1, const char *pstr2)
 {
 	while (*pstr1 == *pstr2) {
@@ -148,7 +148,7 @@ char *strstr(const char *haystack, const char *needle)
 	return NULL;
 }
 
-// fixme
+// FIXME
 char *strcasestr(const char *haystack, const char *needle)
 {
 	return NULL;

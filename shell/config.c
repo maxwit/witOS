@@ -23,4 +23,4 @@ static const struct option config_opt[] = {
 	},
 };
 
-REGISTER_HELP_L1(config, "g-bios system configuration utility", config_opt);
+REGISTER_HELP_L1(config, "witOS system configuration utility", config_opt);

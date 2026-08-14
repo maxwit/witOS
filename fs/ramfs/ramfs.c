@@ -189,7 +189,7 @@ static struct dentry *ramfs_mount(struct file_system_type *fs_type, int flags,
 	return root;
 }
 
-// fixme
+// FIXME
 static void ramfs_umount(struct super_block *sb)
 {
 }
@@ -257,7 +257,7 @@ static int ramfs_mkdir(struct inode *parent, struct dentry *de, umode_t mode)
 	if (!inode)
 		return -ENOMEM;
 
-	// inode->i_ino = 1234; // fixme
+	// inode->i_ino = 1234; // FIXME
 	inode->i_mode = mode;
 
 	inode->i_op = &ramfs_dir_inode_operations;

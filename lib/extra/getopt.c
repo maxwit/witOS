@@ -52,7 +52,7 @@ int getopt(int argc, char *argv[], const char *opt_str)
 		}
 
 		if (optind >= argc || argv[optind][opt_pos] == '\0') {
-			//fixme
+			//FIXME
 			if (non_arg_start)
 				optind = non_arg_start;
 

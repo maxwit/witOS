@@ -23,10 +23,10 @@ static int __init smsc91x_device_init(struct platform_device *pdev)
 	return 0;
 }
 
-//  fixme: __initdata
+//  FIXME: __initdata
 static struct resource smsc91x_res[] = {
 	[0] = {
-		.start = 0x28000000, // fixme
+		.start = 0x28000000, // FIXME
 		.size = 4,
 		.flag = IORESOURCE_MEM,
 	},
@@ -47,7 +47,7 @@ static struct platform_device smsc91x_device = {
 };
 #endif
 
-// fixme: __INITDATA__
+// FIXME: __INITDATA__
 static struct platform_device *beagle_devices[] = {
 #ifdef CONFIG_SMSC91X
 	&smsc91x_device,

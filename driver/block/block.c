@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <malloc.h>
 #include <fs.h>
-#include <drive.h> // fixme
+#include <drive.h> // FIXME
 #include <fs/devfs.h>
 
 static LIST_HEAD(g_bdev_list);
@@ -71,7 +71,7 @@ void submit_bio(int rw, struct bio *bio)
 			ret = drive->put_block(drive, sect << 9, bio->data + len);
 
 		if (ret < 0)
-			bio->flags = 1; // fixme
+			bio->flags = 1; // FIXME
 
 		sect++;
 	}

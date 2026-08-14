@@ -1,5 +1,5 @@
 description:
-  g-bios boot kernel configuration utility
+  witOS boot kernel configuration utility
 
 usage:
   boot [OS] [<options>] ...

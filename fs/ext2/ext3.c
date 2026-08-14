@@ -12,7 +12,7 @@
 
 struct dentry *ext2_mount(struct file_system_type *fs,
 			    int flags, const char *dev_name, void *data);
-// fixme
+// FIXME
 void ext2_kill_sb(struct super_block *sb);
 
 int ext2_check_fs_type(const char *bdev_name);

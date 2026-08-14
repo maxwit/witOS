@@ -88,7 +88,7 @@ int irq_set_trigger(__u32 irq, __u32 type)
 	return pin->intctrl->set_trigger(irq, type);
 }
 
-// fixme
+// FIXME
 void irq_handle_level(struct int_pin *pin, __u32 irq)
 {
 	struct irq_dev *dev_list = pin->dev_list;

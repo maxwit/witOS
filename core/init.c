@@ -5,21 +5,21 @@
 #include <dirent.h>
 #include <unistd.h>
 #include <string.h>
-#include <fcntl.h> // for mount(), fixme
-// fixme: to be removed!
+#include <fcntl.h> // for mount(), FIXME
+// FIXME: to be removed!
 #include <syscalls.h>
 #include <shell.h>
 #include <uart/uart.h>
 #include <font/font.h>
-#include <fs.h> // fixme: to be removed
+#include <fs.h> // FIXME: to be removed
 
 static const char banner[] = "\n\n" // CLRSCREEN
 	"\t+---------------------------------+\n"
-	"\t|    Welcome to MaxWit g-bios!    |\n"
+	"\t|    Welcome to MaxWit witOS!    |\n"
 	"\t|      http://www.maxwit.com      |\n"
 	"\t|      "__DATE__", "__TIME__"      |\n"
 	"\t+---------------------------------+\n"
-	"\ng-bios running "
+	"\nwitOS running "
 #ifdef CONFIG_IRQ_SUPPORT
 	"with IRQ enabled!\n"
 #else
@@ -58,7 +58,7 @@ static int __init system_init(void)
 		printf("\n");
 	}
 
-	printf("(g-bios initialization finished.)\n");
+	printf("(witOS initialization finished.)\n");
 
 	return 0;
 }
@@ -102,7 +102,7 @@ static int __init populate_rootfs()
 	int i, ret;
 	const char *device;
 	unsigned long flags;
-	// fixme
+	// FIXME
 	const char *fstab[][3] = {{"none", "/dev", "devfs"},
 						// {"mmcblk0p1", "/boot", "vfat"},
 						{"mmcblk0p2", "/data", "ext4"}
@@ -165,7 +165,7 @@ int main(void)
 	auto_boot();
 
 	while (1) {
-		printf("\nEnter g-bios Shell.\n");
+		printf("\nEnter witOS Shell.\n");
 		shell();
 	}
 

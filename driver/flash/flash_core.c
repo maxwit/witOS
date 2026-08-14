@@ -10,7 +10,7 @@ static LIST_HEAD(g_master_list);
 static int g_flash_count = 0;
 
 /*
- * g-bios flash partition definition
+ * witOS flash partition definition
  * original from Linux kernel (driver/mtd/cmdlinepart.c)
  *
  * mtdparts  := <mtddef>[;<mtddef]
@@ -25,7 +25,7 @@ static int g_flash_count = 0;
  * edb7312-nor:256k(ARMboot)ro,-(root);edb7312-nand:-(home)
  *
  *
- * fixme:
+ * FIXME:
  * 1. to fix cross/overlapped parts
  * 2. as an API and called from flash core
  * 3. to support <partdef> := <size>[@offset][(<label>[, <image_name>, <image_size>])]
@@ -243,7 +243,7 @@ int flash_register(struct mtd_info *mtd)
 
 		strncpy(mtd->bdev.label, "mtd", sizeof(mtd->bdev.label));
 
-		flash_fops_init(&mtd->bdev); // fixme: not here!
+		flash_fops_init(&mtd->bdev); // FIXME: not here!
 		ret = block_device_register(&mtd->bdev);
 		// if ret < 0 ...
 	} else {
@@ -280,7 +280,7 @@ int flash_register(struct mtd_info *mtd)
 			slave->write_oob = part_write_oob;
 			slave->block_isbad   = part_block_is_bad;
 			slave->block_markbad = part_block_mark_bad;
-			slave->scan_bad_block = mtd->scan_bad_block; // fixme
+			slave->scan_bad_block = mtd->scan_bad_block; // FIXME
 
 			list_add_tail(&slave->slave_node, &mtd->slave_list);
 

@@ -219,7 +219,7 @@ static int tftp_get_file(int argc, char **argv)
 		return ret;
 	}
 
-	// fixme: check file type
+	// FIXME: check file type
 	if (dlopt.dst) {
 		// set file name
 		snprintf(conf_attr, CONF_ATTR_LEN, "bdev.%s.image.name", dlopt.dst);
@@ -251,7 +251,7 @@ static int tftp_put_file(int argc, char **argv)
 
 	memset(&opt, 0x0, sizeof(opt));
 
-	// fixme
+	// FIXME
 	while ((ch = getopt(argc, argv, "a:m:r:l:t:v:")) != -1) {
 		switch(ch) {
 		case 'a':

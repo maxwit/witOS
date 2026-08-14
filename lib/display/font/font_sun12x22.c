@@ -6148,7 +6148,7 @@ static const unsigned char fontdata_sun12x22[FONTDATAMAX] = {
 	0x00, 0x00, /* 000000000000 */
 };
 
-static const __GBIOS_FONT__ struct font_desc font_sun_12x22 = {
+static const __WITOS_FONT__ struct font_desc font_sun_12x22 = {
 	.name	= "SUN12x22",
 	.width	= 12,
 	.height	= 22,

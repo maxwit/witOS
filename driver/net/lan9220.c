@@ -93,7 +93,7 @@ static void lan9220_mdio_write(struct net_device *ndev, __u8 addr, __u8 reg, __u
 static int lan9220_hw_init(struct net_device *ndev)
 {
 	__u32 val;
-#ifdef CONFIG_IRQ_SUPPORT // fixme
+#ifdef CONFIG_IRQ_SUPPORT // FIXME
 	struct mii_phy *phy;
 #endif
 	struct lan9220_chip *lan9220 = ndev->chip;
@@ -178,7 +178,7 @@ static int lan9220_recv_packet(struct net_device *ndev)
 
 	while (packet_count--) {
 		packet_status = lan9220_readl(lan9220, RX_STATUS_PORT);
-		// fixme: to discard the error packet
+		// FIXME: to discard the error packet
 		packet_length = packet_status >> 16 & 0x3fff;
 		if (0 == packet_length)
 			break;
@@ -282,7 +282,7 @@ static int lan9220_isr(__u32 irq, void *dev)
 #else
 static int lan9220_poll(struct net_device *ndev)
 {
-	// fixme
+	// FIXME
 	lan9220_link_change(ndev);
 	return lan9220_recv_packet(ndev);
 }
@@ -367,7 +367,7 @@ static int __init lan9220_probe(struct platform_device *pdev)
 		goto error;
 
 #ifdef CONFIG_IRQ_SUPPORT
-	irq_set_trigger(irq, IRQ_TYPE_HIGH); // fixme
+	irq_set_trigger(irq, IRQ_TYPE_HIGH); // FIXME
 	ret = irq_request(irq, lan9220_isr, ndev);
 	if (ret < 0)
 		goto error;

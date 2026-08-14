@@ -2,7 +2,7 @@
 #include <string.h>
 #include "linux.h"
 
-#define CONFIG_RAM_BANK_NUM  1 // fixme!
+#define CONFIG_RAM_BANK_NUM  1 // FIXME!
 
 struct tag *begin_setup_atag (void *tag_base)
 {
@@ -35,7 +35,7 @@ struct tag *setup_cmdline_atag(struct tag *cur_tag, char *cmd_line)
 	return cur_tag;
 }
 
-// fixme
+// FIXME
 struct tag *setup_mem_atag (struct tag *cur_tag)
 {
 	int i;
@@ -60,7 +60,7 @@ struct tag *setup_ramdisk_atag(struct tag *cur_tag, struct image_cache *rd_cache
 
 	cur_tag->hdr.tag = ATAG_RAMDISK;
 	cur_tag->hdr.size = tag_size(TagRamDisk);
-	cur_tag->stRamDisk.flags = 3; // fixme!!
+	cur_tag->stRamDisk.flags = 3; // FIXME!!
 	cur_tag->stRamDisk.nStart = (__u32)rd_cache->cache_base;
 	cur_tag->stRamDisk.size  = rd_cache->cache_size;
 

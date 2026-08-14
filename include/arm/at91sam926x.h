@@ -70,7 +70,7 @@
 
 #define CONFIG_PERI_A           0xffff0000
 
-// fixme
+// FIXME
 
 #define INITRD_BASE_ADDR   (SDRAM_BASE + SDRAM_SIZE / 4)
 #define INITRD_MAX_SIZE    (SDRAM_SIZE / 4)
@@ -78,7 +78,7 @@
 #define LINUX_BASE_ADDR    (INITRD_BASE_ADDR + SDRAM_SIZE / 4)
 #define LINUX_MAX_SIZE     (SDRAM_SIZE / 4)
 
-// fixme
+// FIXME
 #define ATAG_BASE          SDRAM_BASE
 
 #define PLLACK_RATE      (MAINCK_RATE * ((MULA) + 1) / (DIVA))

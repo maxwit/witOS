@@ -61,11 +61,11 @@ static inline int tftp_send_ack(const int fd, const __u16 blk,
 	return ret;
 }
 
-// fixme
+// FIXME
 int tftp_download(struct tftp_opt *opt)
 {
 	int ret;
-	int sockfd, fd = -1; // fixme!!!
+	int sockfd, fd = -1; // FIXME!!!
 	__u16 blk_num;
 	__u8 *buff_ptr;
 	socklen_t addrlen;

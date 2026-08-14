@@ -11,7 +11,7 @@
 #include <fs/ext4.h>
 
 #define MAX_MNT_LEN 256
-#define SECT_SIZE   (1 << 9) // fixme
+#define SECT_SIZE   (1 << 9) // FIXME
 
 static int ext4_lookup(struct inode *parent, struct dentry *dentry,
 						struct nameidata *nd);
@@ -49,7 +49,7 @@ static struct inode *ext4_alloc_inode(struct super_block *sb)
 	if (!eii)
 		return NULL;
 
-	eii->vfs_inode.i_sb = sb; // fixme
+	eii->vfs_inode.i_sb = sb; // FIXME
 
 	return &eii->vfs_inode;
 }
@@ -167,7 +167,7 @@ static size_t get_tind_block(struct super_block *sb,
 	__le32 buff[index_per_block];
 	__le32 dbuff[index_per_block];
 	__le32 tbuff[index_per_block];
-	int i = 0 /*? fixme*/, j, k, h;
+	int i = 0 /*? FIXME*/, j, k, h;
 
 	if(len <= 0)
 		return 0;
@@ -261,7 +261,7 @@ static bool is_extent(struct inode *in)
 
 static int __extent_idx(struct ext4_extent_header *extent_header)
 {
-	// fixme
+	// FIXME
 	GEN_DBG("extent_idx not support\n");
 
 	return 0;
@@ -304,7 +304,7 @@ static int ext4_get_extent_blkbums(struct inode *in, size_t skip, __le32 block[]
 	while (i < extent_header->eh_entries) {
 		size_t start = extent->ee_block;
 		size_t len   = extent->ee_len;
-		size_t addr  = extent->ee_start_lo; // fixme
+		size_t addr  = extent->ee_start_lo; // FIXME
 
 		while (iter < nums &&
 				(iter + skip) >= start &&
@@ -330,7 +330,7 @@ static int ext4_get_blknums(struct inode *in, size_t skip, __le32 block[], size_
 		return ext4_get_extent_blkbums(in, skip, block, nums);
 	}
 
-	// fixme
+	// FIXME
 	return get_block_indexs(in->i_sb, EXT4_I(in)->i_e4in, skip, block, nums);
 }
 
@@ -402,7 +402,7 @@ struct inode *ext4_iget(struct super_block *sb, unsigned long ino)
 	inode->i_size = le32_to_cpu(e4_in->i_size_lo);
 
 	e4_ini = EXT4_I(inode);
-	e4_ini->i_e4in = e4_in; // fixme
+	e4_ini->i_e4in = e4_in; // FIXME
 
 	if (S_ISREG(inode->i_mode)) {
 		inode->i_op = &ext4_reg_inode_operations;
@@ -453,7 +453,7 @@ static int ext4_fill_super(struct super_block *sb)
 		goto L1;
 	}
 
-#if 1 // fixme
+#if 1 // FIXME
 	e4_sb = &e4_sbi->e4_sb;
 	memcpy(e4_sb, buff, sizeof(*e4_sb));
 #endif
@@ -525,7 +525,7 @@ static struct dentry *ext4_mount(struct file_system_type *fs,
 	return mount_bdev(fs, flags, dev_name, data, ext4_read_super);
 }
 
-// fixme
+// FIXME
 static void ext4_kill_sb(struct super_block *sb)
 {
 }
@@ -699,7 +699,7 @@ static bool is_hbtree_dir(struct inode *in)
 
 static int ext4_dx_readdir(struct file *fp, void *dirent, filldir_t filldir)
 {
-	// fixme
+	// FIXME
 
 	GEN_DBG("Not support dx read!\n");
 

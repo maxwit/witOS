@@ -4,7 +4,7 @@
 #include <string.h>
 #include <assert.h>
 #include <unistd.h>
-#include <random.h> // fixme: to be removed
+#include <random.h> // FIXME: to be removed
 #include <fs.h>
 #include <net/net.h>
 

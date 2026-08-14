@@ -3,7 +3,7 @@
 #ifdef __arm__
 #include <arm/types.h>
 #else
-#include <arm/types.h> // fixme
+#include <arm/types.h> // FIXME
 // #error "arch not supported yet"
 #endif
 
@@ -13,9 +13,9 @@ typedef unsigned int   __u32, u32, uint32_t, umode_t;
 typedef unsigned long  size_t, u_long, blkcnt_t;
 typedef signed int     ssize_t;
 typedef unsigned long long uint64_t, u64;
-typedef unsigned long loff_t; // fixme : unsigned long long
+typedef unsigned long loff_t; // FIXME : unsigned long long
 
-// fixme
+// FIXME
 typedef unsigned short __le16;
 typedef unsigned int   __le32;
 
@@ -77,7 +77,7 @@ typedef enum {false, true} bool;
 #define min(x, y)         ((x) < (y) ? (x) : (y))
 #define max(x, y)         ((x) > (y) ? (x) : (y))
 
-// fixme
+// FIXME
 #define SWAP(a,b) \
 	do { \
 		typeof(a) _________tmp; \
@@ -86,7 +86,7 @@ typedef enum {false, true} bool;
 		(b) = _________tmp; \
 	} while(0)
 
-#ifdef __GBIOS_VER__
+#ifdef __WITOS_VER__
 #define GAPI
 #define EXPORT_SYMBOL(func)
 #else

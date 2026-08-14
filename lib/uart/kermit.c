@@ -63,8 +63,8 @@ int kermit_load(struct loader_opt *opt)
 	__u8 curr_char;
 	__u8 *curr_addr = (__u8 *)opt->load_addr;
 	int index, count, checksum, len, seq, real_seq = 0;
-	int type = KERM_TYPE_BREAK; // fixme
-	int fd = -1 /* fixme!!! */ , ret, i;
+	int type = KERM_TYPE_BREAK; // FIXME
+	int fd = -1 /* FIXME!!! */ , ret, i;
 	image_t img_type = IMG_MAX;
 
 	if (!opt->load_addr) {
@@ -118,7 +118,7 @@ int kermit_load(struct loader_opt *opt)
 		type = buff[index++];
 		checksum += type;
 
-		if (len) // fixme: handle extended length
+		if (len) // FIXME: handle extended length
 			len -= 2;
 
 		switch (type) {

@@ -86,7 +86,7 @@ static int at91_emac_send(struct net_device *ndev, struct sock_buff *skb)
 	val |= 1 << 9;
 	at91_emac_writel(EMAC_NCR, val);
 
-	while (!(tx_rear->stat & (1 << 31))); // fixme
+	while (!(tx_rear->stat & (1 << 31))); // FIXME
 
 	ndev->stat.tx_packets++;
 
@@ -108,7 +108,7 @@ static int at91_emac_recv(struct net_device * ndev)
 	rx_head = emac->rx_head;
 	rx_rear = (struct emac_buff_desc *)at91_emac_readl(EMAC_RBQP);
 
-	assert(rx_head->stat & EMAC_SOF); // fixme
+	assert(rx_head->stat & EMAC_SOF); // FIXME
 
 	while (rx_head != rx_rear) {
 		if (rx_head->stat & EMAC_SOF) {
@@ -120,7 +120,7 @@ static int at91_emac_recv(struct net_device * ndev)
 #endif
 		}
 
-		assert(buf_ptr); // fixme
+		assert(buf_ptr); // FIXME
 		memcpy(buf_ptr, (__u8*)(rx_head->addr & ~0x3), RX_BUFF_LEN);
 		buf_ptr += RX_BUFF_LEN;
 
@@ -257,16 +257,15 @@ static int __init at91_emac_driver_init(void)
 	emac = ndev->chip;
 
 	//
-	ndev->chip_name   = "AT91SAM9263 EMAC";
-	//
-	ndev->send_packet = at91_emac_send;
+	ndev->chip_name = "AT91SAM9263 EMAC";
 	ndev->set_mac_addr = at91_emac_set_mac;
+	ndev->send_packet  = at91_emac_send;
 #ifndef CONFIG_IRQ_SUPPORT
-	ndev->ndev_poll   = at91_emac_poll;
+	ndev->ndev_poll    = at91_emac_poll;
 #endif
-	//
-	ndev->mdio_read   = at91_emac_mdio_read;
-	ndev->mdio_write  = at91_emac_mdio_write;
+	// MII interface
+	ndev->mdio_read  = at91_emac_mdio_read;
+	ndev->mdio_write = at91_emac_mdio_write;
 
 	at91_clock_enable(PID_EMAC);
 

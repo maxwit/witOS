@@ -23,7 +23,7 @@ static int __init at91sam9263_init(void)
 		1 << 30;   // EMDIO
 	at91_gpio_conf_periA(PIOE, mask, 0);
 
-	// fixme
+	// FIXME
 	at91_rstc_writel(RSTC_MR, (0xA5 << 24) | (0x0d << 8) | 0x1);
 	at91_rstc_writel(RSTC_CR, (0xA5 << 24) | (0x1 << 3));
 

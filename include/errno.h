@@ -1,5 +1,5 @@
 
-// porting from kernel and adapted for g-bios
+// porting from kernel and adapted for witOS
 
 #pragma once
 

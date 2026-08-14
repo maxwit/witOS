@@ -46,7 +46,7 @@ static int omapfb_set_par(struct fb_info *fb)
 	dss_writel(DISPC_TIMING_H, pan->hbp << 20 | pan->hfp << 8 | pan->hpw);
 	dss_writel(DISPC_TIMING_V, pan->vbp << 20 | pan->vfp << 8 | pan->vpw);
 
-	// fixme
+	// FIXME
 	val = readl(VA(CM_CLKSEL_DSS));
 	val &= ~0x1F;
 	val |= CLKSEL_DSS1;
@@ -57,7 +57,7 @@ static int omapfb_set_par(struct fb_info *fb)
 	dss_writel(DISPC_GFX_POSITION, 0);
 	dss_writel(DISPC_GFX_SIZE, (var->yres - 1) << 16 | (var->xres - 1));
 
-	// fixme
+	// FIXME
 	switch (pan->bpp) {
 	case 16:
 		val = 0x6;
@@ -105,7 +105,7 @@ static int omapfb_reset(struct fb_info *fb)
 	dss_writel(DISPC_SYSCONFIG, 0x02);
 	for (to = 0; to < OMAP_TIMEOUT; to++) {
 		val = dss_readl(DISPC_SYSCONFIG);
-		if (!(val & 0x2)) // fixme
+		if (!(val & 0x2)) // FIXME
 			break;
 
 		udelay(0x100);

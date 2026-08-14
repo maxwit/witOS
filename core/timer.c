@@ -2,7 +2,7 @@
 
 static volatile __u32 g_tick_count = 1;
 static volatile __u32 loops_perjiffies = DEFAULT_LOOPS_PERJIFFIES;
-static volatile __u32 loops_perusec = DEFAULT_LOOPS_PERJIFFIES; //fixme
+static volatile __u32 loops_perusec = DEFAULT_LOOPS_PERJIFFIES; //FIXME
 
 void inc_tick(void)
 {
@@ -73,7 +73,7 @@ void calibrate_delay(__u32 ticks_persecond)
 	printf("----%d \n", g_tick_count);
 #endif
 
-	loops_perusec = (loops_perjiffies * ticks_persecond) / 1000000; //fixme
+	loops_perusec = (loops_perjiffies * ticks_persecond) / 1000000; //FIXME
 }
 
 void udelay(__u32 n)

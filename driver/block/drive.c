@@ -21,7 +21,7 @@ struct msdos_part {
 
 static LIST_HEAD(g_master_list);
 
-// fixme: to support extended partion
+// FIXME: to support extended partion
 static int msdos_part_scan(struct disk_drive *drive, struct part_attr part_tab[])
 {
 	int i;
@@ -39,7 +39,7 @@ static int msdos_part_scan(struct disk_drive *drive, struct part_attr part_tab[]
 		if (dos_pt[i].lba_size == 0)
 			break;
 
-		// fixme:
+		// FIXME:
 		// support size large than 4G
 		part_tab[i].label[0] = '\0';
 		part_tab[i].base = dos_pt[i].lba_start * drive->sect_size;
@@ -80,7 +80,7 @@ int disk_drive_register(struct disk_drive *drive)
 	INIT_LIST_HEAD(&drive->slave_list);
 	list_add_tail(&drive->master_node, &g_master_list);
 
-	// fixme: to support uEFI/GPT
+	// FIXME: to support uEFI/GPT
 	n = msdos_part_scan(drive, part_tab);
 	// if n < 0 ...
 
@@ -89,7 +89,7 @@ int disk_drive_register(struct disk_drive *drive)
 		if (NULL == slave)
 			return -ENOMEM;
 
-		snprintf(slave->bdev.name, LABEL_NAME_SIZE, "%sp%d", // fixme
+		snprintf(slave->bdev.name, LABEL_NAME_SIZE, "%sp%d", // FIXME
 			drive->bdev.name, i + 1);
 
 		slave->bdev.base = part_tab[i].base;

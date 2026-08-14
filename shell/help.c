@@ -31,7 +31,7 @@ int usage(void)
 	help = current->help;
 	if (!help) {
 		printf("%s: help infomation not available.\n"
-			"Please refer to g-bios user manual.\n", argv[0]);
+			"Please refer to witOS user manual.\n", argv[0]);
 		return -ENOENT;
 	}
 

@@ -49,7 +49,7 @@ static struct platform_device dm9000_device = {
 };
 #endif
 
-// fixme: __INITDATA__
+// FIXME: __INITDATA__
 static struct platform_device *devkit8000_devices[] = {
 #ifdef CONFIG_DM9000
 	&dm9000_device,

@@ -4,7 +4,7 @@
 
 #pragma once
 
-// fixme !!
+// FIXME !!
 #if defined(CONFIG_S3C2440) || defined(CONFIG_S3C2410)
 #define CONFIG_DM9000_IRQ        IRQ_EINT7
 #define DM9000_PHYS_BASE         0x20000000

@@ -14,7 +14,7 @@
 
 #define TFTP_MODE_OCTET  "octet"
 
-#undef  TFTP_DEBUG  // fixme: depend on configuration
+#undef  TFTP_DEBUG  // FIXME: depend on configuration
 #define TFTP_VERBOSE
 
 #define MAX_MODE_LEN 12

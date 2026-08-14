@@ -3,4 +3,4 @@ board.id = beagle
 display.lcd.model = P043F1A4
 display.lcd.pixel_format = PIX_RGB16
 flash.nand.ecc_mode = NAND_ECC_NONE
-flash.parts = omap2-nand.0:128K(x-load),2M(g-bios),3M(linux),64M(rootfs),64M(user),-(data)
+flash.parts = omap2-nand.0:128K(x-load),2M(witOS),3M(linux),64M(rootfs),64M(user),-(data)

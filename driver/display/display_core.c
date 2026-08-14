@@ -21,7 +21,7 @@ static __u16 RGB24toRGB16(__u8 r, __u8 g, __u8 b)
 static void draw_logo(void * const video_buff, __u32 width, __u32 height, pix_fmt_t pix_format)
 {
 	int i;
-	void *vbuff = video_buff; // fixme
+	void *vbuff = video_buff; // FIXME
 
 #ifdef CONFIG_BOOTUP_LOGO
 	int j, x, y;
@@ -30,11 +30,11 @@ static void draw_logo(void * const video_buff, __u32 width, __u32 height, pix_fm
 	__u32 step_w;
 	__u32 rgb_size;
 	__u32 line_width;
-	extern unsigned char _gbios_jpg[];
-	// extern unsigned int _gbios_jpg_len;
+	extern unsigned char _witos_jpg[];
+	// extern unsigned int _witos_jpg_len;
 	struct djpeg_opts djpeg2bmp;
 
-	djpeg2bmp.jpegbuf = _gbios_jpg;
+	djpeg2bmp.jpegbuf = _witos_jpg;
 
 	jpeg2bmp_decode(&djpeg2bmp);
 
@@ -52,7 +52,7 @@ static void draw_logo(void * const video_buff, __u32 width, __u32 height, pix_fm
 			x = (djpeg2bmp.imgbi->biHeight - ((i * step_h) >> 10) - 1) * line_width;
 			y = (((j * step_w) >> 10) / 3) * 3;
 
-			// fixme
+			// FIXME
 			switch (pix_format) {
 			case PIX_RGB24:
 			case PIX_RGB32:
@@ -80,7 +80,7 @@ static void draw_logo(void * const video_buff, __u32 width, __u32 height, pix_fm
 	}
 
 	free(djpeg2bmp.bmpbuf);
-#else // fixme
+#else // FIXME
 	__u32 pix;
 
 	struct rgb_format
@@ -136,7 +136,7 @@ static void draw_logo(void * const video_buff, __u32 width, __u32 height, pix_fm
 		break;
 	}
 
-	// fixme
+	// FIXME
 	pix = MAKE_PIX(r);
 	for (i = 0; i < width * (height / 3); i++) {
 		memcpy(vbuff, &pix, rgb.bytes);
@@ -166,7 +166,7 @@ struct display *display_create(void)
 	if (!disp)
 		return NULL;
 
-	// fixme!
+	// FIXME!
 	if (conf_get_attr("display.lcd.pixel", conf_pixel) == 0) {
 		if (strncmp(conf_pixel, "PIX_RGB24", sizeof(conf_pixel)))
 			disp->pix_fmt = PIX_RGB24;
@@ -219,7 +219,7 @@ int display_register(struct display* disp)
 	if (!disp->set_vmode)
 		return -EINVAL;
 
-	// fixme
+	// FIXME
 	ret = conf_get_attr("display.lcd.model", attr_val);
 	if (ret < 0) {
 		DPRINT("%s(): fail to get lcd model\n", __func__);
@@ -272,7 +272,7 @@ int display_register(struct display* disp)
 	if (ret < 0)
 		return ret;
 
-	disp->video_mode = (void *)vm; // fixme
+	disp->video_mode = (void *)vm; // FIXME
 
 	for (minor = 0; minor < NR_DISP; minor++) {
 		if (!g_system_display[minor]) {

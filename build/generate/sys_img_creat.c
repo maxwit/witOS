@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 	switch (argc) {
 	case 2:
 		txt_file = argv[1];
-		img_file = "g-bios-sys.bin";
+		img_file = "witOS-sys.bin";
 		break;
 
 	case 3:
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
 
 	printf("\"%s\" created!\n", img_file);
 
-	// fixme
+	// FIXME
 	ret = 0;
 L2:
 	close(img_fd);

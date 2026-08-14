@@ -1,7 +1,7 @@
 #pragma once
 #include <types.h>
 
-#define __GBIOS_FONT__ __USED__ __attribute__((section(".gbios_font")))
+#define __WITOS_FONT__ __USED__ __attribute__((section(".witos_font")))
 
 struct font_desc {
     const char *name;

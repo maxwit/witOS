@@ -52,7 +52,7 @@ static int do_mount(const char *type, unsigned long flags, const char *dev_name,
 	root = fstype->mount(fstype, flags, dev_name, NULL);
 	if (!root) {
 		DPRINT("fail to mount %s!\n", dev_name);
-		return -EIO; // fixme!
+		return -EIO; // FIXME!
 	}
 
 	vfsmnt->root = root;
@@ -97,7 +97,7 @@ int sys_mount(const char *dev_name, const char *path,
 	if (NULL == type)
 		return -EINVAL;
 
-	ret = path_walk(path, &nd); // fixme: directory only!
+	ret = path_walk(path, &nd); // FIXME: directory only!
 	if (ret < 0) {
 		GEN_DBG("\"%s\" does NOT exist!\n");
 		return ret;
@@ -193,7 +193,7 @@ int list_mount()
 		count++;
 		printf("(%d) %-8s %-4s %s\n", count,
 			mnt->vfsmnt.dev_name ? mnt->vfsmnt.dev_name : "none",
-			mnt->mountpoint ? mnt->mountpoint->d_name.name : "/", // fixme
+			mnt->mountpoint ? mnt->mountpoint->d_name.name : "/", // FIXME
 			mnt->vfsmnt.fstype->name);
 	}
 

@@ -91,10 +91,10 @@ static struct dentry *fat_mount(struct file_system_type *fs_type, unsigned long 
 	fat_fs->data = data_off;
 	fat_fs->clus_size = clus_size;
 
-	// fixme
+	// FIXME
 	drive->sect_size = blk_size;
 
-	// fixme
+	// FIXME
 	root_ino = zalloc(sizeof(*root_ino));
 	if (!root_ino)
 		return NULL;
@@ -187,7 +187,7 @@ static int fat_find_next_file(struct fat_fs *fs,
 					for (i = 0; i < 8 && dir_pos->name[i] != ' '; i++)
 							name[i] = dir_pos->name[i];
 
-					name[i++] = '.'; // fixme
+					name[i++] = '.'; // FIXME
 
 					for (j = 8; j < 11 && dir_pos->name[j] != ' '; j++, i++)
 						name[i]	= dir_pos->name[j];
@@ -236,7 +236,7 @@ static struct dentry *fat_lookup(struct inode *parent, const char *name)
 	blk_num = (__u32)parent->i_ext;
 
 	while (1) {
-		// fixme
+		// FIXME
 		ret = fat_find_next_file(fat_fs, &blk_num, sname, fat_de);
 		printf("%s(): ret = %d, sname = %s\n",
 			__func__, ret, sname);
@@ -281,7 +281,7 @@ err:
 
 #define MAX_FILE_NAME_SIZE 256
 
-// fixme
+// FIXME
 static int fat_open(struct file *fp, struct inode *inode)
 {
 	return 0;

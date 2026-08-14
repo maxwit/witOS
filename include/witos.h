@@ -6,10 +6,10 @@
 #warning "depricated"
 #endif
 
-// fixme!
+// FIXME!
 #define CONFIG_HEAD_SIZE 0x2000
 
-// fixme
+// FIXME
 #define FILE_NAME_SIZE   256
 
 #ifndef __ASSEMBLY__

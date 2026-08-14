@@ -11,7 +11,7 @@
 #include <fs/ext2.h>
 
 #define MAX_MNT_LEN 256
-#define SECT_SIZE   (1 << 9) // fixme
+#define SECT_SIZE   (1 << 9) // FIXME
 
 static int ext2_lookup(struct inode *parent, struct dentry *dentry,
 						struct nameidata *nd);
@@ -49,7 +49,7 @@ static struct inode *ext2_alloc_inode(struct super_block *sb)
 	if (!eii)
 		return NULL;
 
-	eii->vfs_inode.i_sb = sb; // fixme
+	eii->vfs_inode.i_sb = sb; // FIXME
 
 	return &eii->vfs_inode;
 }
@@ -165,7 +165,7 @@ static size_t get_tind_block(struct super_block *sb,
 	__le32 buff[index_per_block];
 	__le32 dbuff[index_per_block];
 	__le32 tbuff[index_per_block];
-	int i = 0 /*? fixme*/, j, k, h;
+	int i = 0 /*? FIXME*/, j, k, h;
 
 	if(len <= 0)
 		return 0;
@@ -298,7 +298,7 @@ struct inode *ext2_iget(struct super_block *sb, unsigned long ino)
 	inode->i_size = le32_to_cpu(e2_in->i_size);
 
 	e2_ini = EXT2_I(inode);
-	e2_ini->i_e2in = e2_in; // fixme
+	e2_ini->i_e2in = e2_in; // FIXME
 
 	if (S_ISREG(inode->i_mode)) {
 		inode->i_op = &ext2_reg_inode_operations;
@@ -348,7 +348,7 @@ static int ext2_fill_super(struct super_block *sb)
 		goto L1;
 	}
 
-#if 1 // fixme
+#if 1 // FIXME
 	e2_sb = &e2_sbi->e2_sb;
 	memcpy(e2_sb, buff, sizeof(*e2_sb));
 #endif
@@ -419,7 +419,7 @@ struct dentry *ext2_mount(struct file_system_type *fs,
 	return mount_bdev(fs, flags, dev_name, data, ext2_read_super);
 }
 
-// fixme
+// FIXME
 void ext2_kill_sb(struct super_block *sb)
 {
 }
@@ -498,7 +498,7 @@ static ssize_t ext2_read(struct file *fp, void *buff, size_t size, loff_t *off)
 	if (!e2_in)
 		return -ENOENT;
 
-	// fixme!!!
+	// FIXME!!!
 	if (fp->f_pos == e2_in->i_size)
 		return 0;
 
@@ -550,7 +550,7 @@ static int ext2_lookup(struct inode *parent, struct dentry *dentry, struct namei
 	inode = ext2_iget(parent->i_sb, ino);
 	if (!inode) {
 		// ...
-		return -EIO; // fixme!!!
+		return -EIO; // FIXME!!!
 	}
 
 	// dentry->d_inode = inode;
@@ -594,7 +594,7 @@ static int ext2_readdir(struct file *fp, void *dirent, filldir_t filldir)
 	if (e2_de->rec_len + fp->f_pos > in->i_size)
 		return -ENODATA;
 
-	filldir(dirent, e2_de->name, e2_de->name_len, fp->f_pos /*fixme*/,
+	filldir(dirent, e2_de->name, e2_de->name_len, fp->f_pos /*FIXME*/,
 		in->i_ino, e2_de->file_type);
 
 	fp->f_pos += e2_de->rec_len;

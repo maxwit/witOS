@@ -18,18 +18,18 @@
 
 #define KERNEL_MAX_SIZE   (CONFIG_HEAP_SIZE / 4)
 
-// fixme: for debug stage while no flash driver available
+// FIXME: for debug stage while no flash driver available
 static int build_command_line(char *cmd_line, size_t max_len)
 {
 	int ret;
 	char *str = cmd_line;
 	char local_ip[IPV4_STR_LEN], server_ip[IPV4_STR_LEN], net_mask[IPV4_STR_LEN];
-	__u32 client_ip, client_mask; // fixme
+	__u32 client_ip, client_mask; // FIXME
 	char config[CONF_VAL_LEN];
 	const char *console;
 	char attr[CONF_ATTR_LEN];
 
-	// fixme: to be removed
+	// FIXME: to be removed
 	memset(cmd_line, 0, max_len);
 
 	// set root
@@ -78,7 +78,7 @@ static int build_command_line(char *cmd_line, size_t max_len)
 			if (conf_get_attr(attr, config) >= 0) {
 				fstype = config;
 			} else {
-				// fixme: check it always
+				// FIXME: check it always
 				type = image_type_detect(image_buff, sizeof(image_buff));
 				switch (type) {
 				case IMG_YAFFS1:
@@ -166,7 +166,7 @@ static int build_command_line(char *cmd_line, size_t max_len)
 static ssize_t load_image(void *dst, const char *src)
 {
 	int ret;
-	const char *image = "zImage"; // fixme!
+	const char *image = "zImage"; // FIXME!
 
 	if (!strncmp(src, "tftp://", 7)) {
 		struct tftp_opt dlopt;
@@ -193,7 +193,7 @@ static ssize_t load_image(void *dst, const char *src)
 				return -ENODEV;
 			}
 
-			ret = flash_read(flash, dst, 0, KERNEL_MAX_SIZE /* fixme */);
+			ret = flash_read(flash, dst, 0, KERNEL_MAX_SIZE /* FIXME */);
 			if (ret < 0) {
 				GEN_DBG("fail to load kernel image from %s!\n", src);
 				return ret;
@@ -213,7 +213,7 @@ static ssize_t load_image(void *dst, const char *src)
 			return fd;
 		}
 
-		ret = read(fd, dst, KERNEL_MAX_SIZE /* fixme */);
+		ret = read(fd, dst, KERNEL_MAX_SIZE /* FIXME */);
 		if (ret < 0) {
 			GEN_DBG("fail to load kernel image from %s!\n", src);
 			return ret;
@@ -326,7 +326,7 @@ int main(int argc, char *argv[])
 	if (ret < 0 || !strcmp(config, "auto"))
 		build_command_line(cmd_line, sizeof(cmd_line));
 	else
-		strcpy(cmd_line, config); // fixme: strncpy()
+		strcpy(cmd_line, config); // FIXME: strncpy()
 
 	tag = setup_cmdline_atag(tag, cmd_line);
 
@@ -340,7 +340,7 @@ int main(int argc, char *argv[])
 		if (BA_STOP == verbose) {
 			tag = setup_initrd_atag(tag, config, 0);
 		} else {
-			initrd = malloc(MB(8)); // fixme
+			initrd = malloc(MB(8)); // FIXME
 			if (!initrd) {
 				ret = -ENOMEM;
 				goto error;
@@ -376,7 +376,7 @@ int main(int argc, char *argv[])
 	ret = conf_get_attr("linux.kernel", config);
 	if (ret < 0) {
 		// set to default
-		strcpy(config, "mtdblock3"); // fixme
+		strcpy(config, "mtdblock3"); // FIXME
 	}
 
 	printf("Loading Linux kernel from %s to %p ...\n", config, linux_kernel);
@@ -405,7 +405,7 @@ int main(int argc, char *argv[])
 	int ret, opt;
 	struct stat st;
 	ssize_t size, len = 0;
-	const char *img_fn = "/data/boot/zImage"; // fixme
+	const char *img_fn = "/data/boot/zImage"; // FIXME
 	LINUX_KERNEL_ENTRY linux_kernel;
 	const struct board_desc *board;
 	struct tag *tag, *const tag_base = VA(ATAG_BASE);
@@ -418,7 +418,7 @@ int main(int argc, char *argv[])
 			if (optarg)
 				nfs = optarg;
 			else
-				nfs = "192.168.0.106"; // fixme;
+				nfs = "192.168.0.106"; // FIXME;
 			break;
 
 		default:
@@ -449,7 +449,7 @@ int main(int argc, char *argv[])
 		p += sprintf(p, " root=/dev/nfs rw"
 					" nfsroot=%s:/maxwit/image/rootfs", nfs);
 
-		if (1) // fixme
+		if (1) // FIXME
 			p += sprintf(p, " ip=dhcp");
 		else
 			p += sprintf(p, " ip=192.168.0.6:%s:%s:255.255.255.0"

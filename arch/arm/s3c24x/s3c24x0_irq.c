@@ -88,7 +88,7 @@ static void s3c24x0_ext_ack(__u32 irq)
 	// bit = 1UL << (irq - EXTINT_OFF);
 	// writel(VA(S3C2410_EINTPEND), bit);
 
-	// fixme
+	// FIXME
 	if (irq <= IRQ_EINT7) {
 		if ((req & 0xf0) != 0)
 			s3c24x0_irq_ack(IRQ_EINT_4TO7);
@@ -335,7 +335,7 @@ int __init s3c24x0_interrupt_init(void)
 			irq_set_handler(irq, s3c24x0_parse_ext_irq, 1);
 			break;
 
-		case IRQ_UART0: // fixme
+		case IRQ_UART0: // FIXME
 		case IRQ_UART1:
 		case IRQ_UART2:
 		case IRQ_TC_ADC:
@@ -360,7 +360,7 @@ int __init s3c24x0_interrupt_init(void)
 
 	irq_set_handler(IRQ_TC_ADC, s3c24x0_parse_adc_irq, 1);
 
-	irq_enable(); // fixme
+	irq_enable(); // FIXME
 
 	return 0;
 }

@@ -113,7 +113,7 @@ static int __init omap3_nand_probe(void)
 	nfc->addr_reg = VA(GPMC_BASE + GPMC_NAND_ADDRESS_0);
 	nfc->data_reg = VA(GPMC_BASE + GPMC_NAND_DATA_0);
 
-	nfc->name = "omap2-nand"; // fixme
+	nfc->name = "omap2-nand"; // FIXME
 	nfc->flash_ready  = omap3_nand_ready;
 	// ECC
 	nfc->ecc_data_len = 512;

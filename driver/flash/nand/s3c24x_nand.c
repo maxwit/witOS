@@ -88,7 +88,7 @@ static void s3c24x_nand_enable_hwecc(struct nand_chip *nand, int mode)
 	val = readl(VA(NAND_CTRL_BASE + NF_CONT));
 	val |= 1 << 5 | 1 << 4;
 	writel(VA(NAND_CTRL_BASE + NF_CONT), val);
-#else // fixme
+#else // FIXME
 	#error
 #endif
 }
@@ -161,7 +161,7 @@ static int __init s3c24x_nand_probe(void)
 	if (NULL == nfc)
 		return -ENOMEM;
 
-// fixme
+// FIXME
 #ifdef CONFIG_S3C2410
 	nfc->name = "s3c2410_nand";
 #elif defined(CONFIG_S3C2440)
@@ -206,7 +206,7 @@ static int __init s3c24x_nand_probe(void)
 	return 0;
 L1:
 
-#ifdef CONFIG_S3C2410 // fixme
+#ifdef CONFIG_S3C2410 // FIXME
 	// disable nand
 	stat = readl(VA(NAND_CTRL_BASE + NF_CONF));
 	stat &= ~(1 << 15);

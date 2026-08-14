@@ -33,7 +33,7 @@
 #define NAND_CHIP_SIZE     (64 << 20)
 #endif
 
-// fixme
+// FIXME
 #define ATAG_BASE          SDRAM_BASE
 
 #define INITRD_BASE_ADDR   (SDRAM_BASE + SDRAM_SIZE / 4)
@@ -44,7 +44,7 @@
 
 #define CURR_UART_BASE   (UART0_BASE + CONFIG_UART_INDEX * 0x4000)
 
-// fixme
+// FIXME
 #ifdef CONFIG_S3C2410
 #define FIFO_FULL  0x200
 #define RX_COUNT   0xf

@@ -1,5 +1,6 @@
 /*
- * the entry of g-bios bottom half
+ * Entry of witOS
+ * the first code executed after reset
  */
 
 	.global _start

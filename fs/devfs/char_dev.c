@@ -57,7 +57,7 @@ int device_create(dev_t devt, const char *fmt, ...)
 	// ..
 
 	cdev->minor = MINOR(devt);
-	// cdev->name = fmt; // fixme
+	// cdev->name = fmt; // FIXME
 	cdev->next = NULL;
 
 	for (p = &g_cdev_type[major]->cdev_list; *p; p = &(*p)->next)

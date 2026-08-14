@@ -10,7 +10,7 @@
 #define MMC_BLK_SIZE 512
 #define MMC_HOST_NUM 5
 
-static int mmc_card_count = 0; // fixme
+static int mmc_card_count = 0; // FIXME
 
 static struct mmc_host *g_mmc_host[MMC_HOST_NUM];
 

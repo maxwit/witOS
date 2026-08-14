@@ -16,7 +16,7 @@ static int s3c6410_set_vmode(struct display *disp, const struct lcd_vmode *vm)
 	__u32 fmt, bpp;
 	__u32 dma = disp->video_mem_pa;
 
-	// fixme
+	// FIXME
 	switch (disp->pix_fmt) {
 	case PIX_RGB24:
 	case PIX_RGB32:

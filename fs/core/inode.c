@@ -2,7 +2,7 @@
 #include <errno.h>
 #include <string.h>
 
-// fixme!
+// FIXME!
 int dev_mknod(const char *path, int mode, dev_t devt)
 {
 	int ret;

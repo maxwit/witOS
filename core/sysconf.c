@@ -245,7 +245,7 @@ L1:
 }
 
 #if 0
-// fixme
+// FIXME
 static inline void conf_check_add(const char *attr, const char *val)
 {
 	char str[CONF_VAL_LEN];
@@ -255,7 +255,7 @@ static inline void conf_check_add(const char *attr, const char *val)
 }
 #endif
 
-// fixme: move to init.c and add __init
+// FIXME: move to init.c and add __init
 int conf_check()
 {
 	int sz;
